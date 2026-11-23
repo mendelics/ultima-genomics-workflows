@@ -441,11 +441,8 @@ task UGCallVariants{
     docker: docker
     gpuType: "nvidia-tesla-t4"
     gpuCount: num_gpus
-    omicsResourceFallbackOrder: [ #!UnknownRuntimeKey
-      {"acceleratorType": gpu_tier_order[0], "acceleratorCount": num_gpus, "cpu": num_cpus, "memory": "~{mem} GB", "omicsResourceWaitTimeoutInMin": gpu_wait_timeout_min},
-      {"acceleratorType": gpu_tier_order[1], "acceleratorCount": num_gpus, "cpu": num_cpus, "memory": "~{mem} GB", "omicsResourceWaitTimeoutInMin": gpu_wait_timeout_min},
-      {"acceleratorType": gpu_tier_order[2], "acceleratorCount": num_gpus, "cpu": num_cpus, "memory": "~{mem} GB", "omicsResourceWaitTimeoutInMin": gpu_final_tier_wait_timeout_min}
-    ]
+    cpu: num_cpus
+    memory: "~{mem} GB"
     noAddress: no_address
   }
 output {
