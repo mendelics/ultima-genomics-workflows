@@ -1105,7 +1105,7 @@ task CreateAssembly {
         disks: "local-disk " + disk_size + " HDD"
         docker: make_examples_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1159,7 +1159,7 @@ task ChooseBestAlignment {
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1199,7 +1199,7 @@ task LongHomopolymersAlignment {
             disks: "local-disk " + disk_size + " HDD"
             docker: gridss_docker
             preemptible: preemptible_tries
-            noAddress: no_address
+            noAddress: false
         }
         output {
             File monitoring_log = "monitoring.log"
@@ -1328,7 +1328,7 @@ task MatchReadsToHaplotypes {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1363,7 +1363,7 @@ task MergeMatchReadsFiles {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address   
+        noAddress: false
     }    
     output {
         File monitoring_log = "monitoring.log"
@@ -1405,7 +1405,7 @@ task MergeMatchedReadsIntoAssembly {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }   
     output {
         File monitoring_log = "monitoring.log"
@@ -1468,7 +1468,7 @@ task IdentifyVariants {
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1501,7 +1501,7 @@ task PreFilterCandidates {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1570,7 +1570,7 @@ VERBOSITY=INFO \
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1778,7 +1778,7 @@ task AnnotateVariants {
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1817,7 +1817,7 @@ task GermlineLinkVariants {
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1878,7 +1878,7 @@ task SomaticGripss {
         disks: "local-disk " + disk_size + " HDD"
         docker: gripss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -1924,7 +1924,7 @@ task ConvertVcfFormat {
         disks: "local-disk " + disk_size + " HDD"
         docker: gridss_docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"

@@ -172,7 +172,7 @@ command <<<
         memory: "2 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
     }
     output {

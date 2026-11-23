@@ -179,7 +179,7 @@ task Trimmer {
         memory: "~{memory_gb} GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -232,7 +232,7 @@ task TrimmerAggregateStats {
         memory: "5 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File aggregated_trimmer_stats = "~{aggregated_trimmer_stats_filename}"
@@ -284,7 +284,7 @@ task CutadaptMarkAdapter {
         cpu: cpus
         memory: "~{memory_gb} GB"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         preemptible: preemptible_tries
         disks: "local-disk " + disk_size + " HDD"
     }
@@ -325,7 +325,7 @@ task CutadaptTrimAdapter {
     runtime {
         memory: "10 GB"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         preemptible: preemptible_tries
         disks: "local-disk " + disk_size + " HDD"
     }

@@ -314,7 +314,7 @@ task UGMakeExamples{
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
     preemptible: preemptible_tries
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File monitoring_log = "monitoring.log"
@@ -443,7 +443,7 @@ task UGCallVariants{
     gpuCount: num_gpus
     cpu: num_cpus
     memory: "~{mem} GB"
-    noAddress: no_address
+    noAddress: false
   }
 output {
     File monitoring_log = "monitoring.log"
@@ -517,7 +517,7 @@ task UGSerializeONNX {
     gpuCount: num_gpus
     acceleratorType: gpu_type #!UnknownRuntimeKey
     acceleratorCount: num_gpus #!UnknownRuntimeKey
-    noAddress: no_address
+    noAddress: false
   }
 
   output {
@@ -684,7 +684,7 @@ task UGPostProcessing{
     cpu: "1"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File monitoring_log = "monitoring.log"
@@ -735,7 +735,7 @@ task QCReport{
     cpu: 1
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File monitoring_log = "monitoring.log"

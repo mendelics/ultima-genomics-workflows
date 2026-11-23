@@ -8,7 +8,7 @@
     "SegDupAnalysis.background_bed": "gs://ULTIMA_REFERENCES/hg38/segmental_duplications/background_regions/hg38.bg.bed.gz",
     "SegDupAnalysis.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx",
     "SegDupAnalysis.preemptible_tries": 3,
-    "SegDupAnalysis.no_address": true,
+    "SegDupAnalysis.no_address": false,
     "SegDupAnalysis.cloud_provider_override": "aws",
     "SegDupAnalysis.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

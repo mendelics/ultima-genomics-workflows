@@ -185,7 +185,7 @@ task ExtractSampleNameFlowOrder{
         cpu: 1
         memory: "2 GB"
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
         docker: docker
     }
 
@@ -264,7 +264,7 @@ task AggregateMetricsAndConvertToJson {
         memory: "2 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -317,7 +317,7 @@ task ConvertSorterStatsToH5 {
         memory: "2 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -398,7 +398,7 @@ task ScatterIntervalList {
     runtime {
         memory: "6 GB"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 }
 
@@ -428,7 +428,7 @@ task IntervalListOfGenome {
     docker: docker
     continueOnReturnCode: true
     maxRetries: 1
-    noAddress: no_address
+    noAddress: false
   }
   output{
     File monitoring_log = "monitoring.log"
@@ -474,7 +474,7 @@ task IntervalListFromString {
     docker: docker
     continueOnReturnCode: true
     maxRetries: 1
-    noAddress: no_address
+    noAddress: false
   }
   output{
     File monitoring_log = "monitoring.log"
@@ -508,7 +508,7 @@ task IntervalListTotalLength {
     memory: "1 GB"
     disks: "local-disk " + 4 + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
 }
 
@@ -535,7 +535,7 @@ task FastaLengthFromIndex {
     memory: "1 GB"
     disks: "local-disk " + 4 + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
 }
 
@@ -582,7 +582,7 @@ task ConcatMetricsJsons {
         memory: "1 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File monitoring_log = "monitoring.log"
@@ -738,7 +738,7 @@ task ConcatHtmls {
         docker: docker
         cpu: 1
         disks: "local-disk " + ceil(disk_size) + " HDD"
-        noAddress: true
+        noAddress: false
     }
 
     output {
@@ -770,7 +770,7 @@ task ZipAndIndexVcf{
         memory: "2 GB"
         preemptible: preemptibles
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File output_vcf_file = "~{output_vcf}"
@@ -808,7 +808,7 @@ task RenameSampleInBam {
         cpu: 1
         disks: "local-disk " + disk_size + " LOCAL"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -852,7 +852,7 @@ task MergeCramFiles {
             memory: "8GB"
             disks: "local-disk " + (ceil(size(cache_tarball, "GB") + size(crams, "GB")) * 3 + 10) + " HDD"
             docker: docker
-            noAddress: no_address
+            noAddress: false
             cpu: cpus_to_use
             preemptible: preemptible_tries
 
@@ -881,7 +881,7 @@ task MergeBams {
         cpu: 8
         disks: "local-disk " + disk_size + " LOCAL"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -917,7 +917,7 @@ task MergeVCFs {
     memory: "10 GB"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
   output {
@@ -949,7 +949,7 @@ task ConcatVcfs{
         memory: "4 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 2
     }
     output {
@@ -981,7 +981,7 @@ task NaiveConcatVcfs {
         memory: "4 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 2
     }
     output {
@@ -1198,7 +1198,7 @@ task CopyFiles {
         memory: "2 GB"
         cpu: 1
         disks: "local-disk " +ceil(2*size(input_files,"GB") + 1) + " HDD"
-        noAddress: true
+        noAddress: false
     }
     output {
         Array[File] output_files = input_files
@@ -1243,7 +1243,7 @@ task VcfToIntervalListAndBed {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -1281,7 +1281,7 @@ task BedToIntervalList {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -1554,7 +1554,7 @@ task GetSortOrder {
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {

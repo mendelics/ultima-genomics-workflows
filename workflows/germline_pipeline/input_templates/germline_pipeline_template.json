@@ -105,7 +105,7 @@
     "GermlinePipeline.run_roh": true,
     "GermlinePipeline.run_ua": true,
     "GermlinePipeline.segdup_model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx",
-    "GermlinePipeline.segdup_no_address": true,
+    "GermlinePipeline.segdup_no_address": false,
     "GermlinePipeline.segdup_preemptible_tries": 3,
     "GermlinePipeline.sex_chromosomes": [
         "chrX",

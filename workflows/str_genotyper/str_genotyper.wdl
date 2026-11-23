@@ -395,7 +395,7 @@ task GenotypeSTR {
         memory: "~{memory_gb} GB"
         disks: "local-disk ~{disk_gb} HDD"
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     

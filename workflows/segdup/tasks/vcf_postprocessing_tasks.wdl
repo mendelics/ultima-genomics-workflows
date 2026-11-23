@@ -40,7 +40,7 @@ task ApplyQualFilters {
     memory: "15 GB"
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: gatk_docker
-    noAddress: true
+    noAddress: false
     maxRetries: 1
   }
    output {
@@ -78,7 +78,7 @@ task ApplyAlleleFrequencyRatioFilter {
     memory: "4 GB"
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: ugbio_filtering_docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
    output {
@@ -112,7 +112,7 @@ task RemoveRefCalls {
     memory: "4 GB"
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: bcftools_docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
    output {
@@ -165,7 +165,7 @@ task CallROH {
     memory: "4 GB"
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
    output {
@@ -203,7 +203,7 @@ task CalibrateBridgingSnvs {
       memory: "4 GB"
       disks: "local-disk " + ceil(disk_size) + " HDD"
       docker: ugvc_docker
-      noAddress: true
+      noAddress: false
       maxRetries: 1
     }
     output {
@@ -254,7 +254,7 @@ task SuppressHetOnSexChromosomes {
         memory: "4 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-      noAddress: true
+      noAddress: false
       maxRetries: 1
     }
 }

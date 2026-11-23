@@ -428,7 +428,7 @@ task SomaticSNVfindClassifier {
         cpu: cpus
         memory: "~{memory_gb} GB"
         disks: "local-disk ~{disk_size} HDD"
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -527,7 +527,7 @@ task ValidateTumorNormalSampleNames {
         cpu: 1
         memory: "2 GB"
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
         docker: docker
     }
 

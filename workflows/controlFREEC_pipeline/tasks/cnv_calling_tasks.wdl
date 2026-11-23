@@ -52,7 +52,7 @@ task CnmopsGetReadCountsFromBam{
         memory: "16 GiB"
         disks: "local-disk " + ceil(disk_size) + " LOCAL"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
     }
     output {
@@ -115,7 +115,7 @@ task ConvertBedGraphToGranges {
         memory: "4 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {
@@ -155,7 +155,7 @@ task ExtractGenomeWindows {
         memory: "4 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
 
@@ -195,7 +195,7 @@ task RebinCohortReadsCount {
         memory: "8 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
 
@@ -235,7 +235,7 @@ task AddCountsToCohortMatrix {
         memory: "32 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {
@@ -274,7 +274,7 @@ task CreateCohortReadsCountMatrix {
         memory: "64 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: parallel
     }
     output {
@@ -335,7 +335,7 @@ task RunCnmops {
         memory: "32 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: parallel
     }
     output {
@@ -378,7 +378,7 @@ task ExtractNormalizedReadCount {
         memory: "8 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {
@@ -483,7 +483,7 @@ task ProcessCnmopsCnvs {
         memory: "8 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 4
     }
     output {
@@ -523,7 +523,7 @@ task AddCIPOS {
         memory: "4 GB"
         disks: "local-disk 4 HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
     }
     output {
@@ -743,7 +743,7 @@ task CnvVcfToBed {
         memory: "4 GiB"
         disks: "local-disk 10 LOCAL"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
 
@@ -802,7 +802,7 @@ task PlotCNVResults {
         memory: "4 GiB"
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     

@@ -75,7 +75,7 @@ task HaplotypeCaller {
         cpu: 2
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         continueOnReturnCode: [0,134,139]
         bootDiskSizeGb: 15
         maxRetries: 1
@@ -151,7 +151,7 @@ task ConvertGVCFtoVCF {
     cpu: 1
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
     output {
@@ -196,7 +196,7 @@ task CreateSECBlacklist {
     cpu: 1
     disks: "local-disk " + ceil(disk_size) + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
     maxRetries: 1
   }
     output {
@@ -256,7 +256,7 @@ task PrepareTrainingSet {
     memory: "16 GB"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File monitoring_log = "monitoring.log"
@@ -295,7 +295,7 @@ task TrainModel {
     memory: "64 GB"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File model_h5 = "~{base_file_name}.model.h5"
@@ -347,7 +347,7 @@ task FilterVCF {
     memory: "64 GB"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
   output {
     File monitoring_log = "monitoring.log"
@@ -388,7 +388,7 @@ task CompressAndIndexVCF {
     memory: "2 GB"
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
-    noAddress: no_address
+    noAddress: false
   }
 
 }
@@ -430,7 +430,7 @@ task NormalizeVariants {
   runtime {
     memory: "3 GB"
     preemptible: preemptible_tries
-    noAddress: no_address
+    noAddress: false
     cpu: 2
     disks: "local-disk " + disk_size + " HDD"
     docker: docker

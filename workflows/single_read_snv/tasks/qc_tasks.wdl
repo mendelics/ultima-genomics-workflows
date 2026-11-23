@@ -143,7 +143,7 @@ task CollectDuplicateMetrics {
         memory: "8 GB"
         preemptible: preemptible_tries
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -185,7 +185,7 @@ task CollectQualityYieldMetrics {
         memory: "8 GB"
         preemptible: preemptible_tries
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File metrics = "~{metrics_filename}"
@@ -240,7 +240,7 @@ task CollectWgsMetrics {
         memory: "10 GB"
         disks: "local-disk " + disk_size_gb + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File metrics = "~{metrics_filename}"
@@ -295,7 +295,7 @@ task CollectRawWgsMetrics {
         memory: "10 GB"
         disks: "local-disk " + disk_size_gb + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File metrics = "~{metrics_filename}"
@@ -353,7 +353,7 @@ task CollectAggregationMetrics {
         disks: "local-disk " + disk_size + " HDD"
         preemptible: preemptible_tries
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File alignment_summary_metrics = "~{output_bam_prefix}.alignment_summary_metrics"
@@ -616,7 +616,7 @@ task FastQC {
     cpu: cpu
     memory: "~{memory_gb} GB"
     disks: "local-disk " + disk_size + " " + disk_type
-    noAddress: no_address
+    noAddress: false
   }
 }
 
@@ -653,7 +653,7 @@ task CreateReportSingleSampleQC {
         docker: docker
         cpu: 1
         disks: "local-disk " + ceil(disk_size) + " HDD"
-        noAddress: true
+        noAddress: false
         maxRetries: preemptible_tries
     }
 
@@ -706,7 +706,7 @@ task CollectHsMetrics {
         disks: "local-disk " + disk_size + " HDD"
         preemptible: preemptible_tries
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File hybrid_selection_metrics = "~{output_bam_prefix}.HSmetrics"
@@ -755,7 +755,7 @@ task TargetsBedcov {
         disks: "local-disk " + disk_size + " HDD"
         preemptible: preemptible_tries
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File targets_bedcov = "~{base_file_name}.~{target_intervals_basename}.bedcov.gz"

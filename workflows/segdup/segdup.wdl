@@ -631,7 +631,7 @@ task FixCNVFormat {
         preemptible: preemptible_tries
         cpu: 1
         disks: "local-disk " + disk_size + " HDD"
-        noAddress: no_address
+        noAddress: false
     }
 }
 
@@ -680,7 +680,7 @@ task LpaCaller {
         preemptible: preemptible_tries
         cpu: 2
         disks: "local-disk " + disk_size + " HDD"
-        noAddress: no_address
+        noAddress: false
     }
 }
 
@@ -719,7 +719,7 @@ task ConcatSmallVariants {
         preemptible: preemptible_tries
         cpu: 1
         disks: "local-disk " + disk_size + " HDD"
-        noAddress: no_address
+        noAddress: false
     }
 }
 
@@ -791,6 +791,6 @@ task ConcatCnvBed {
         preemptible: preemptible_tries
         cpu: 1
         disks: "local-disk " + disk_size + " HDD"
-        noAddress: no_address
+        noAddress: false
     }
 }

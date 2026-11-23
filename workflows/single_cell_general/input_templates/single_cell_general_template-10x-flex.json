@@ -25,7 +25,7 @@
     },
     "SingleCell.star_genome": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/STAR_hg38_cr_2.7.8a.zip",
     "SingleCell.preemptible_tries": 1,
-    "SingleCell.no_address": true,
+    "SingleCell.no_address": false,
     "SingleCell.cpu": 32,
     "SingleCell.create_md5_checksum_outputs": false,
     "SingleCell.barcode_rg": "S1_L001_R1_001",

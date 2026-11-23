@@ -34,7 +34,7 @@ task SplitCram {
         cpu: 1
         disks: "local-disk " + disk_size + " LOCAL"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -80,7 +80,7 @@ task SamSplitter {
         preemptible: preemptible_tries
         memory: "3.75 GB"
         disks: "local-disk " + disk_size + " HDD"
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
 }
@@ -180,7 +180,7 @@ task ConvertCramOrBamToUBam {
         cpu: 3
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -275,7 +275,7 @@ task SamToFastqAndBwaMemAndMba {
         cpu: 16
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -368,7 +368,7 @@ task SamToFastqAndBwaMeth {
         cpu: 25
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -415,7 +415,7 @@ task BuildUaIndex{
         memory: "200 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: ua_docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -461,7 +461,7 @@ task BuildUaMethIndex {
         memory: "200 GB"
         disks: "local-disk " + disk_size + " HDD"
         docker: ua_docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -538,7 +538,7 @@ task AlignWithUA {
         cpu: cpu
         disks: "local-disk " + disk_size + " HDD"
         docker: ua_docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
 
@@ -619,7 +619,7 @@ task AlignWithUAMeth {
         cpu: cpu
         disks: "local-disk " + disk_size + " HDD"
         docker: ua_docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -750,7 +750,7 @@ task SamToFastqAndGiraffeAndMba {
         cpu: threads
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
     output {
@@ -813,7 +813,7 @@ task MarkDuplicatesSpark {
         memory: ram_size + " GB"
         preemptible: 0
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File output_bam = "~{output_bam_basename}.bam"
@@ -857,7 +857,7 @@ task MarkDuplicates {
         memory: "8 GB"
         preemptible: 1
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File output_bam = "~{base_file_name}.markdup.bam"
@@ -1026,7 +1026,7 @@ task StarAlign {
         memory: "~{memory_gb} GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -1082,7 +1082,7 @@ task StarGenomeGenerate {
         memory: "40 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -1141,7 +1141,7 @@ task StarAlignStats {
         memory: "8 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -1176,7 +1176,7 @@ task SortBam {
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
 
     }
 
@@ -1207,7 +1207,7 @@ task IndexBam {
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }   
     output {
         File bam_index = "~{input_bam}.bai"
@@ -1249,7 +1249,7 @@ task SortByNameAndKeepPaired {
         disks: "local-disk " + ceil(disk_size) + " SSD"
         docker: docker
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File output_bam = "~{output_bam_basename}.bam"
@@ -1319,7 +1319,7 @@ task UGGiraffeAlignment {
         cpu: "~{cpu}"
         disks: "local-disk " + disk_size + " SSD"
         docker: vg_docker
-        noAddress: no_address
+        noAddress: false
         maxRetries: 1
     }
 
