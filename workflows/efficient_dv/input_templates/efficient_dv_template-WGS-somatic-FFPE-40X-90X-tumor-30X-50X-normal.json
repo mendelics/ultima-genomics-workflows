@@ -50,6 +50,6 @@
     ],
     "EfficientDV.ug_make_examples_memory_override": 4,
     "EfficientDV.ug_call_variants_extra_mem": 16,
-    "EfficientDV.cloud_provider_override": "aws",
+    "EfficientDV.cloud_provider_override": "gcp",
     "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

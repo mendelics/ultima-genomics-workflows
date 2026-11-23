@@ -37,6 +37,6 @@
     "EfficientDV.keep_duplicates": false,
     "EfficientDV.add_ins_size_channel": true,
     "EfficientDV.override_target_intervals": "<targeted_exome>.interval_list",
-    "EfficientDV.cloud_provider_override": "aws",
+    "EfficientDV.cloud_provider_override": "gcp",
     "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

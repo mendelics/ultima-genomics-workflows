@@ -38,6 +38,6 @@
         "ref_paths": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/GRCh38h0h.path_list.txt",
         "prefix_to_strip": "GRCh38#0#"
     },
-    "SVPipeline.cloud_provider_override": "aws",
+    "SVPipeline.cloud_provider_override": "gcp",
     "SVPipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

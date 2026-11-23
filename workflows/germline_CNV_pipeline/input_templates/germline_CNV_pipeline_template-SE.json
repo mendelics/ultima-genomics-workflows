@@ -13,6 +13,6 @@
     "GermlineCNVPipeline.create_md5_checksum_outputs": false,
     "GermlineCNVPipeline.filtering_model": "gs://ULTIMA_REFERENCES/filtering_models/cnv_filtering_model_v1.7.4.pkl",
     "GermlineCNVPipeline.filtering_model_decision_threshold": 31,
-    "GermlineCNVPipeline.cloud_provider_override": "aws",
+    "GermlineCNVPipeline.cloud_provider_override": "gcp",
     "GermlineCNVPipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

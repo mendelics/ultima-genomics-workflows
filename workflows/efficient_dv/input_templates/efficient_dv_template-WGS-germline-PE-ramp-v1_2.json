@@ -46,6 +46,6 @@
     "EfficientDV.num_haplotypes": 8,
     "EfficientDV.include_reference_in_haplotypes": false,
     "EfficientDV.diploid_sampling_in_haplotypes": false,
-    "EfficientDV.cloud_provider_override": "aws",
+    "EfficientDV.cloud_provider_override": "gcp",
     "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

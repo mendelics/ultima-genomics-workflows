@@ -128,6 +128,6 @@
         "v_aware_alignment_flag": false,
         "ua_extra_args": "--seed-score-ratio 0.5 --vector --soft-clipping --realignment-tag re --mismatch-cost -6"
     },
-    "GermlinePipeline.cloud_provider_override": "aws",
+    "GermlinePipeline.cloud_provider_override": "gcp",
     "GermlinePipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

@@ -134,6 +134,6 @@
     "GermlinePipeline.run_hla": true,
     "GermlinePipeline.run_pgx": true,
     "GermlinePipeline.run_segdup": true,
-    "GermlinePipeline.cloud_provider_override": "aws",
+    "GermlinePipeline.cloud_provider_override": "gcp",
     "GermlinePipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

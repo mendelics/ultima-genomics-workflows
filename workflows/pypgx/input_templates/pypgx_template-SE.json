@@ -34,6 +34,6 @@
         "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta"
     ],
     "PyPGx.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx",
-    "PyPGx.cloud_provider_override": "aws",
+    "PyPGx.cloud_provider_override": "gcp",
     "PyPGx.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

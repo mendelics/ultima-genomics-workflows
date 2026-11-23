@@ -44,6 +44,6 @@
     "PyPGx.single_strand_filter": false,
     "PyPGx.min_base_quality": 0,
     "PyPGx.ug_make_examples_extra_args": "--channels hmer_deletion_quality,hmer_insertion_quality,non_hmer_insertion_quality --max-ins-size 50",
-    "PyPGx.cloud_provider_override": "aws",
+    "PyPGx.cloud_provider_override": "gcp",
     "PyPGx.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

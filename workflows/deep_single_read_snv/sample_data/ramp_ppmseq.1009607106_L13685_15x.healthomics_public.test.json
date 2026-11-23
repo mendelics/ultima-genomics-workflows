@@ -142,6 +142,6 @@
         "read_filters": "gs://ULTIMA_REFERENCES/single_read_snv/create_featuremap_read_filters.json",
         "bed_file": "gs://ULTIMA_REFERENCES/hg38/wgs_calling_regions.without_encode_blacklist.hg38.bed"
     },
-    "DeepSingleReadSNV.cloud_provider_override": "aws",
+    "DeepSingleReadSNV.cloud_provider_override": "gcp",
     "DeepSingleReadSNV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }
