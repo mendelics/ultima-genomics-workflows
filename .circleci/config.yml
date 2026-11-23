@@ -1,0 +1,46 @@
+version: 2.1
+
+# ------------------------------------------------------------------------------
+#                         Executors (Environments)
+# ------------------------------------------------------------------------------
+executors:
+  wdl_validate_docker:
+    docker:
+      - image: broadinstitute/womtool:88-ab3f9b5
+
+  python_docker:
+    docker:
+      - image: cimg/python:3.11
+
+# ------------------------------------------------------------------------------
+#                               Jobs
+# ------------------------------------------------------------------------------
+jobs:
+
+  # Fails when something AWS-specific is left, typically after an upstream merge
+  gcp-conversion:
+    executor: python_docker
+    steps:
+      - checkout
+      - run:
+          name: "Check that the workflows are converted to GCP"
+          command: python3 scripts/convert_to_gcp.py --check
+
+  # womtool on every workflow entry point and on its input templates
+  wdl-validate:
+    executor: wdl_validate_docker
+    steps:
+      - checkout
+      - run:
+          name: "Validate workflows and input templates"
+          command: bash .circleci/validate-wdl.sh
+
+# ------------------------------------------------------------------------------
+#                          Orchestration (Workflows)
+# ------------------------------------------------------------------------------
+workflows:
+  wdl-pipelines:
+    jobs:
+      - gcp-conversion
+
+      - wdl-validate
