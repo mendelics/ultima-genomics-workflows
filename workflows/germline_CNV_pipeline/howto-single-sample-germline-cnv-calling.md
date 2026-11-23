@@ -31,23 +31,23 @@ The workflow assume that you have the following files:
 ### Files required for the analysis (download locally)
 The following required files are publicly available:
 
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
 
 The cohort reads count matrix for the default `hg38` genome is:
 
-    s3://ultimagen-workflow-resources-us-east-1/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.hg38.ReadsCount.rds
+    gs://ULTIMA_REFERENCES/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.hg38.ReadsCount.rds
 
 The ploidy files are genome independent - the same files are used for every reference genome,
 since all cohorts were built with the same sample order:
 
-    s3://ultimagen-workflow-resources-us-east-1/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_female.ploidy
-    s3://ultimagen-workflow-resources-us-east-1/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_male.ploidy
+    gs://ULTIMA_REFERENCES/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_female.ploidy
+    gs://ULTIMA_REFERENCES/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_male.ploidy
 	
 ML filtering models can be found here (single-end data: decision threshold 31; paired-end data: decision threshold 30): 
     
-    s3://ultimagen-workflow-resources-us-east-1/filtering_models/cnv_filtering_model_v1.7.4.pkl
-    s3://ultimagen-workflow-resources-us-east-1/filtering_models/cnv_filtering_model_pe_v1.0.1.pkl
+    gs://ULTIMA_REFERENCES/filtering_models/cnv_filtering_model_v1.7.4.pkl
+    gs://ULTIMA_REFERENCES/filtering_models/cnv_filtering_model_pe_v1.0.1.pkl
 
 ## Generating Germline CNV calls for a single sample
 

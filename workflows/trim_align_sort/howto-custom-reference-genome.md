@@ -101,11 +101,11 @@ workflow GenomeResourcesWorkflow {
         ...
       },
       "my_custom_genome": {
-        "ref_fasta": "s3://my-bucket/my-ref/reference.fasta",
-        "ref_fasta_index": "s3://my-bucket/my-ref/reference.fasta.fai",
-        "ref_dict": "s3://my-bucket/my-ref/reference.dict",
-        "ref_alt": "s3://my-bucket/my-ref/reference.fasta.alt",
-        "ua_index": "s3://my-bucket/my-ref/reference.fasta.uai"
+        "ref_fasta": "gs://my-bucket/my-ref/reference.fasta",
+        "ref_fasta_index": "gs://my-bucket/my-ref/reference.fasta.fai",
+        "ref_dict": "gs://my-bucket/my-ref/reference.dict",
+        "ref_alt": "gs://my-bucket/my-ref/reference.fasta.alt",
+        "ua_index": "gs://my-bucket/my-ref/reference.fasta.uai"
       }
     }
   }
@@ -126,7 +126,7 @@ In your workflow input JSON, set `reference_genome` to the name of your custom g
 
 ## Important Notes
 
-- All resource paths must be fully qualified S3 URIs (e.g., `s3://my-bucket/path/to/file`).
+- All resource paths must be fully qualified S3 URIs (e.g., `gs://my-bucket/path/to/file`).
 - Your S3 bucket must be accessible from the AWS HealthOmics service in the region where you run the workflow.
 - Only include the resource fields that are present in the `GenomeResources` struct. Adding fields that are not in the struct will cause a validation error.
 - If the workflow requires a UA index (`ua_index` field), you must build it for your custom reference before running the workflow. See `howto-ua-align-sort.md` for build instructions.
@@ -139,10 +139,10 @@ This example walks through adding a custom genome and running the workflow with 
 ### 1. Upload reference files to S3
 
 ```bash
-aws s3 cp my_reference.fasta s3://my-bucket/custom-ref/
-aws s3 cp my_reference.fasta.fai s3://my-bucket/custom-ref/
-aws s3 cp my_reference.dict s3://my-bucket/custom-ref/
-aws s3 cp my_reference.fasta.uai s3://my-bucket/custom-ref/
+aws s3 cp my_reference.fasta gs://my-bucket/custom-ref/
+aws s3 cp my_reference.fasta.fai gs://my-bucket/custom-ref/
+aws s3 cp my_reference.dict gs://my-bucket/custom-ref/
+aws s3 cp my_reference.fasta.uai gs://my-bucket/custom-ref/
 ```
 
 ### 2. Edit tasks/genome_resources.wdl
@@ -151,10 +151,10 @@ Add the following entry to the resources map:
 
 ```wdl
       "my_organism": {
-        "ref_fasta": "s3://my-bucket/custom-ref/my_reference.fasta",
-        "ref_fasta_index": "s3://my-bucket/custom-ref/my_reference.fasta.fai",
-        "ref_dict": "s3://my-bucket/custom-ref/my_reference.dict",
-        "ua_index": "s3://my-bucket/custom-ref/my_reference.fasta.uai"
+        "ref_fasta": "gs://my-bucket/custom-ref/my_reference.fasta",
+        "ref_fasta_index": "gs://my-bucket/custom-ref/my_reference.fasta.fai",
+        "ref_dict": "gs://my-bucket/custom-ref/my_reference.dict",
+        "ua_index": "gs://my-bucket/custom-ref/my_reference.fasta.uai"
       }
 ```
 
@@ -163,7 +163,7 @@ Add the following entry to the resources map:
 ```json
 {
     "TrimAlignSort.reference_genome": "my_organism",
-    "TrimAlignSort.input_cram_bam_list": "s3://my-bucket/samples/sample1.cram"
+    "TrimAlignSort.input_cram_bam_list": "gs://my-bucket/samples/sample1.cram"
 }
 ```
 

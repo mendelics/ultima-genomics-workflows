@@ -425,7 +425,7 @@ task ExtractGeneIntervals {
     disks: "local-disk 10 HDD"
     docker: docker
     preemptible: preemptible_tries
-    noAddress: no_address
+    noAddress: false
   }
 }
 
@@ -469,7 +469,7 @@ task DepthOfCoverage {
     disks: "local-disk " + disk_size + " HDD"
     docker: docker
     preemptible: preemptible_tries
-    noAddress: no_address_override
+    noAddress: false
   }
 }
 
@@ -557,7 +557,7 @@ task NGSPipeline {
     disks: "local-disk 10 HDD"
     docker: docker
     preemptible: preemptible_tries
-    noAddress: no_address_override
+    noAddress: false
   }
 }
 
@@ -599,7 +599,7 @@ task ConcatResults {
     disks: "local-disk 10 HDD"
     docker: docker
     preemptible: preemptible_tries
-    noAddress: no_address_override
+    noAddress: false
   }
 
 }

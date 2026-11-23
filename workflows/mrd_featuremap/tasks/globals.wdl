@@ -14,7 +14,7 @@ workflow Globals {
   GlobalVariables glob ={
         "ubuntu_docker": "ubuntu:focal",
         "bcftools_docker": "staphb/bcftools:1.19",
-        "monitoring_script": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh",
+        "monitoring_script": "gs://ULTIMA_REFERENCES/monitor_1.0.sh",
         "ugbio_core_docker": "ultimagenomics/ugbio_core:1.33.0",
         "ugbio_mrd_docker": "ultimagenomics/ugbio_mrd:1.30.1",
         "ugbio_featuremap_docker": "ultimagenomics/ugbio_featuremap:1.28.0",

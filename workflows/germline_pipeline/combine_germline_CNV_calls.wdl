@@ -477,7 +477,7 @@ task ConcatAndAnnotateCallsets {
         memory: "4 GiB"
         disks: "local-disk 10 HDD"
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File combined_cnv_calls_vcf = "~{base_file_name}.combined.vcf.gz"
@@ -525,7 +525,7 @@ task AnnotateWithSplitReadsInfo {
         memory: "4 GiB"
         disks: "local-disk " + disk_size + " HDD"
         preemptible: preemptible_tries
-        noAddress: no_address
+        noAddress: false
     }
     output {
         File annotated_cnv_calls_vcf = "~{base_file_name}.split.annotated.vcf.gz"
@@ -576,7 +576,7 @@ task RunJalignForCNVCandidates {
         memory: "32 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         preemptible: preemptible_tries
         cpu: cpu
     }
@@ -620,7 +620,7 @@ task RefineCNVBreakpoints {
         memory: "4 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         preemptible: preemptible_tries
         cpu: 1
     }
@@ -660,7 +660,7 @@ task CollapseCallset {
         memory: "4 GiB"
         disks: "local-disk " + "4 HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
         preemptible: preemptible_tries
     }
@@ -706,7 +706,7 @@ task CombineSVCNVCalls {
         memory: "2 GiB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
         preemptible: preemptible_tries
     }

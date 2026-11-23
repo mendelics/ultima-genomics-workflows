@@ -1,10 +1,10 @@
 {
   "SingleSampleCnmopsCNVCalling.base_file_name": "test_input_cram",
-  "SingleSampleCnmopsCNVCalling.input_bam_file": "s3://<path/to/>sample1.cram",
-  "SingleSampleCnmopsCNVCalling.input_bam_file_index": "s3://<path/to/>sample1.cram.crai",
-  "SingleSampleCnmopsCNVCalling.cohort_reads_count_matrix": "s3:///<path/to/>cohort_reads_count.rds",
-  "SingleSampleCnmopsCNVCalling.reference_genome": "s3://broad-references/hg38/v0/Homo_sapiens_assembly38.fasta",
-  "SingleSampleCnmopsCNVCalling.reference_genome_index": "s3://broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
+  "SingleSampleCnmopsCNVCalling.input_bam_file": "gs://<path/to/>sample1.cram",
+  "SingleSampleCnmopsCNVCalling.input_bam_file_index": "gs://<path/to/>sample1.cram.crai",
+  "SingleSampleCnmopsCNVCalling.cohort_reads_count_matrix": "gs:///<path/to/>cohort_reads_count.rds",
+  "SingleSampleCnmopsCNVCalling.reference_genome": "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta",
+  "SingleSampleCnmopsCNVCalling.reference_genome_index": "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
   "SingleSampleCnmopsCNVCalling.ref_seq_names":["chr1"],
   "SingleSampleCnmopsCNVCalling.mapq": 1,
   "SingleSampleCnmopsCNVCalling.window_length": 1000,
@@ -12,6 +12,6 @@
   "SingleSampleCnmopsCNVCalling.min_width_value": 2,
   "SingleSampleCnmopsCNVCalling.min_cnv_length": 10000,
   "SingleSampleCnmopsCNVCalling.intersection_cutoff": 0.5,
-  "SingleSampleCnmopsCNVCalling.cnv_lcr_file": "s3://ultimagen-workflow-resources-us-east-1/hg38/UG-High-Confidence-Regions/v2.1/ug_cnv_lcr.bed",
-  "SingleSampleCnmopsCNVCalling.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+  "SingleSampleCnmopsCNVCalling.cnv_lcr_file": "gs://ULTIMA_REFERENCES/hg38/UG-High-Confidence-Regions/v2.1/ug_cnv_lcr.bed",
+  "SingleSampleCnmopsCNVCalling.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

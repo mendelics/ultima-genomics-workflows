@@ -14,10 +14,10 @@ workflow GenomeResourcesWorkflow {
   output {
     Map[String, GenomeResources] resources = {
       "hg38": {
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
-        "srsnv_training_interval_list": "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/wgs_calling_regions.without_encode_blacklist.hg38.chr1_22.interval_list"
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
+        "srsnv_training_interval_list": "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/wgs_calling_regions.without_encode_blacklist.hg38.chr1_22.interval_list"
 }
     }
   }

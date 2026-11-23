@@ -21,7 +21,7 @@ workflow Globals {
         "ug_call_variants_docker": "ultimagenomics/ncv:5.0.0",
         "ug_make_examples_docker": "ultimagenomics/make_examples:3.5.0",
         "bcftools_docker": "staphb/bcftools:1.19",
-        "monitoring_script": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh",
+        "monitoring_script": "gs://ULTIMA_REFERENCES/monitor_1.0.sh",
         "giraffe_docker": "ultimagenomics/giraffe:1.74.0-r1",
         "ugbio_core_docker": "ultimagenomics/ugbio_core:1.33.0",
         "ugbio_cnv_docker": "ultimagenomics/ugbio_cnv:1.33.0",

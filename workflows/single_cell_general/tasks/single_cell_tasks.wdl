@@ -81,7 +81,7 @@ task StarSolo {
         memory: "64 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -200,7 +200,7 @@ task FindInsertBarcodeFastq {
         memory: "4 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -273,7 +273,7 @@ task SingleCellQc {
         memory: "~{memory_gb} GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
     output{
         File report         = "sc_qc/~{base_file_name}.scRNA.applicationQC.html"
@@ -444,7 +444,7 @@ task GatherStatistics {
         disks: "local-disk " + ceil(disk_size) + " " + disk_type
         cpu: cpu_num
         preemptible: preemptibles
-        noAddress: no_address
+        noAddress: false
         maxRetries: max_retries
     }
     output {

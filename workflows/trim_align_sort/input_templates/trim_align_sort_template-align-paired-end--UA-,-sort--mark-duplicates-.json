@@ -6,7 +6,7 @@
     "TrimAlignSort.base_file_name": "<base_file_name>",
     "TrimAlignSort.reference_genome": "hg38",
     "TrimAlignSort.preemptible_tries": 0,
-    "TrimAlignSort.no_address": true,
+    "TrimAlignSort.no_address": false,
     "TrimAlignSort.cpu": 32,
     "TrimAlignSort.create_md5_checksum_outputs": false,
     "TrimAlignSort.steps": {
@@ -26,8 +26,8 @@
         "mark_duplicates_ends_read_uncertainty": 0
     },
     "TrimAlignSort.ref_fastas_cram": [
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/GRCh38_GIABv3.fasta",
-        "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/Homo_sapiens_assembly19.fasta"
+        "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "gs://ULTIMA_REFERENCES/hg38/v3/GRCh38_GIABv3.fasta",
+        "gs://ULTIMA_REFERENCES/hg19/v0/Homo_sapiens_assembly19.fasta"
     ]
 }

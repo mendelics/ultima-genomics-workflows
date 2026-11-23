@@ -219,7 +219,7 @@ task T1KHLAGenotyping {
         cpu: 4
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {
@@ -277,7 +277,7 @@ task T1KKIRGenotyping {
         cpu: 4
         disks: "local-disk " + disk_size + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
     }
 
     output {

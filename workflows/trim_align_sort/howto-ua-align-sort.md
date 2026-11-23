@@ -61,18 +61,18 @@ The following reference files are needed for UA alignment and sorting. These fil
 
 or, from the public S3 bucket:
 
-* `s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta`
-* `s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai`
-* `s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict`
-* `s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt`
+* `gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta`
+* `gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai`
+* `gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict`
+* `gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt`
 
 ### Pre-built UA index file 
 
-* `s3://ultimagen-workflow-resources-us-east-1/hg38/UA/b38-v45-79372c0.uai` - Pre-built UA index
+* `gs://ULTIMA_REFERENCES/hg38/UA/b38-v45-79372c0.uai` - Pre-built UA index
 
 
 ### Step 1 : Build UA Index
-This step creates the UA index file needed for alignment. Note that this file is typically very large, e.g. ~51GiB for the standard hg38 reference genome. This step only needs to be done once per reference genome, and a pre-built index file for hg38 is already provided at `s3://ultimagen-workflow-resources-us-east-1/hg38/UA/b38-v45-79372c0.uai`.
+This step creates the UA index file needed for alignment. Note that this file is typically very large, e.g. ~51GiB for the standard hg38 reference genome. This step only needs to be done once per reference genome, and a pre-built index file for hg38 is already provided at `gs://ULTIMA_REFERENCES/hg38/UA/b38-v45-79372c0.uai`.
 
 This command is implemented in the `BuildUaIndex` task in `wdls/tasks/alignment_tasks.wdl`.
 

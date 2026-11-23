@@ -14,7 +14,7 @@ workflow Globals {
   input {
   GlobalVariables glob ={
         "ubuntu_docker": "ubuntu:focal",
-        "monitoring_script": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh",
+        "monitoring_script": "gs://ULTIMA_REFERENCES/monitor_1.0.sh",
         "ua_docker": "ultimagenomics/alignment:4.1.4",
         "trimmer_docker": "ultimagenomics/trimmer:2.3.7",
         "star_docker": "ultimagenomics/star:2.7.10a",

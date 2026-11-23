@@ -863,7 +863,7 @@ task BigWigToBedGraph{
         memory: "8 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {
@@ -943,7 +943,7 @@ task BedGraphToCpn{
         memory: "4 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {
@@ -980,7 +980,7 @@ task BedGraphToCpn{
         memory: "4 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: true
+        noAddress: false
         cpu: 2
     }
     output {
@@ -1101,7 +1101,7 @@ task runControlFREEC{
         memory: "16 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: maxThreads
     }
     output {
@@ -1192,7 +1192,7 @@ task  ControlFREECCnvsVcf{
         memory: "4 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
     }
 
@@ -1285,7 +1285,7 @@ task FilterControlFREECCnvs {
         memory: "8 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 2
     }
     output {

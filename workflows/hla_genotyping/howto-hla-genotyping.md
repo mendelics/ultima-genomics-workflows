@@ -12,7 +12,7 @@ T1K (The ONE genotyper for KIR and HLA) is a computational tool that infers alle
 2. T1K coordinate files (pre-generated, versioned by database release)
    - HLA coordinate file: `hlaidx_dna_coord.fa`
    - KIR coordinate file: `kiridx_dna_coord.fa` (optional, only if running KIR genotyping)
-  Download from `s3://ultimagen-workflow-resources-us-east-1/hla/t1k_index_hladb_v3.63.0.tar.gz`
+  Download from `gs://ULTIMA_REFERENCES/hla/t1k_index_hladb_v3.63.0.tar.gz`
 3. Docker for t1k ultimagenomics/ugbio_t1k:1.30.0
 
 ### T1K Output Files

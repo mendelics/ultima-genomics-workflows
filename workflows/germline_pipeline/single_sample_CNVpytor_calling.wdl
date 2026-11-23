@@ -251,7 +251,7 @@ task RunCNVpytor {
         memory: "16 GB"
         disks: "local-disk " + ceil(disk_size) + " HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 8
     }
     output {
@@ -289,7 +289,7 @@ task CombineCNVVcfs {
         memory: "4 GB"
         disks: "local-disk 4 HDD"
         docker: docker
-        noAddress: no_address
+        noAddress: false
         cpu: 1
     }
     output {

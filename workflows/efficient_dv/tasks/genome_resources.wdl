@@ -18,74 +18,74 @@ workflow GenomeResourcesWorkflow {
   output {
     Map[String, GenomeResources] resources = {
       "b37": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/wgs_calling_regions.v1.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg19/annotation_intervals/exome.twist.hg19.sort.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/par_regions.b37.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/Homo_sapiens_assembly19.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/Homo_sapiens_assembly19.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/Homo_sapiens_assembly19.fasta.fai",
-        "roh_blacklist": "s3://ultimagen-workflow-resources-us-east-1/hg19/hg19-blacklist.v2.bed"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/hg19/v0/wgs_calling_regions.v1.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg19/annotation_intervals/exome.twist.hg19.sort.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg19/v0/par_regions.b37.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg19/v0/Homo_sapiens_assembly19.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg19/v0/Homo_sapiens_assembly19.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg19/v0/Homo_sapiens_assembly19.fasta.fai",
+        "roh_blacklist": "gs://ULTIMA_REFERENCES/hg19/hg19-blacklist.v2.bed"
 },
       "hg38": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/wgs_calling_regions.hg38.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/exome.twist.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed",
-        "ploidy_exclude_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
-        "roh_blacklist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38-blacklist.v2.bed"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/hg38/v0/wgs_calling_regions.hg38.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/exome.twist.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed",
+        "ploidy_exclude_regions": "gs://ULTIMA_REFERENCES/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
+        "roh_blacklist": "gs://ULTIMA_REFERENCES/hg38/hg38-blacklist.v2.bed"
 },
       "hg38_nist_v3": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/wgs_calling_regions.hg38.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/annotation_intervals/exome.twist.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed",
-        "ploidy_exclude_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/GRCh38_GIABv3.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/GRCh38_GIABv3.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3/GRCh38_GIABv3.fasta.fai",
-        "roh_blacklist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38-blacklist.v2.bed"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/hg38/v3/wgs_calling_regions.hg38.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg38/v3/annotation_intervals/exome.twist.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed",
+        "ploidy_exclude_regions": "gs://ULTIMA_REFERENCES/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/v3/GRCh38_GIABv3.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/v3/GRCh38_GIABv3.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/v3/GRCh38_GIABv3.fasta.fai",
+        "roh_blacklist": "gs://ULTIMA_REFERENCES/hg38/hg38-blacklist.v2.bed"
 },
       "hg38_nist_v3_with_decoy": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/wgs_calling_regions.hg38.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/annotation_intervals/exome.twist.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed",
-        "ploidy_exclude_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta.fai",
-        "roh_blacklist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38-blacklist.v2.bed"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/wgs_calling_regions.hg38.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/annotation_intervals/exome.twist.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed",
+        "ploidy_exclude_regions": "gs://ULTIMA_REFERENCES/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta.fai",
+        "roh_blacklist": "gs://ULTIMA_REFERENCES/hg38/hg38-blacklist.v2.bed"
 },
       "hg38_no_alt": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38_no_alt/wgs_calling_regions.hg38_no_alt.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/exome.twist.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed",
-        "ploidy_exclude_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.fai",
-        "roh_blacklist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38-blacklist.v2.bed"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/hg38/hg38_no_alt/wgs_calling_regions.hg38_no_alt.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/exome.twist.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed",
+        "ploidy_exclude_regions": "gs://ULTIMA_REFERENCES/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.fai",
+        "roh_blacklist": "gs://ULTIMA_REFERENCES/hg38/hg38-blacklist.v2.bed"
 },
       "hg38_taps": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/regions/wgs_calling_regions.hg38_Lambda_pUC19.interval_list",
-        "exome_intervals": "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/exome.twist.bed",
-        "par_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed",
-        "ploidy_exclude_regions": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.fasta.fai"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/deepvariant/regions/wgs_calling_regions.hg38_Lambda_pUC19.interval_list",
+        "exome_intervals": "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/exome.twist.bed",
+        "par_regions": "gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed",
+        "ploidy_exclude_regions": "gs://ULTIMA_REFERENCES/hg38/v0/ploidy/chrY_low_confidence_regions.hg38.bed",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/methyl_seq_ref/251015/hg38_Lambda_pUC19.fasta.fai"
 },
       "mm10": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/mm10/mm10.interval_list",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/mm10/mm10.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/mm10/mm10.fa",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/mm10/mm10.fa.fai"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/mm10/mm10.interval_list",
+        "ref_dict": "gs://ULTIMA_REFERENCES/mm10/mm10.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/mm10/mm10.fa",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/mm10/mm10.fa.fai"
 },
       "mm39": {
-        "efficient_dv_target_intervals": "s3://ultimagen-workflow-resources-us-east-1/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.interval_list",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.fa",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.fa.fai"
+        "efficient_dv_target_intervals": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.interval_list",
+        "ref_dict": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.fa",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/mouse_GRCm39_M31/GRCm39.primary_assembly.genome.fa.fai"
 }
     }
   }

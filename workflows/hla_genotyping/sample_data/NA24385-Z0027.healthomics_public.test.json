@@ -1,9 +1,9 @@
 {
     "HLAGenotyping.base_file_name": "NA24385",
-    "HLAGenotyping.input_cram_bam": "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/NA24385-Z0027.cram",
-    "HLAGenotyping.input_cram_bam_index": "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/NA24385-Z0027.cram.crai",
+    "HLAGenotyping.input_cram_bam": "gs://ULTIMA_REFERENCES/sample_data/germline/NA24385-Z0027.cram",
+    "HLAGenotyping.input_cram_bam_index": "gs://ULTIMA_REFERENCES/sample_data/germline/NA24385-Z0027.cram.crai",
     "HLAGenotyping.reference_genome": "hg38",
-    "HLAGenotyping.t1k_index_tar": "s3://ultimagen-workflow-resources-us-east-1/hla/t1k_index_hladb_v3.63.0.tar.gz",
-    "HLAGenotyping.cloud_provider_override": "aws",
-    "HLAGenotyping.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "HLAGenotyping.t1k_index_tar": "gs://ULTIMA_REFERENCES/hla/t1k_index_hladb_v3.63.0.tar.gz",
+    "HLAGenotyping.cloud_provider_override": "gcp",
+    "HLAGenotyping.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

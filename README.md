@@ -1,129 +1,115 @@
-# healthomics-workflows
-UltimaGenomics repository for workflows compatible with AWS HealthOmics
+# ultima-genomics-workflows
 
-# Table of Contents
-1. [Introduction](#Introduction)
-2. [Terraform Modules for Environment Setup](#Terraform-Modules-for-Environment-Setup)
-3. [Deploying Private Workflow](#Deploying-Private-Workflow)
-4. [Running Private Workflow](#Running-Private-Workflow)
-5. [Deploying & Running Private workflow (manual)](#Deploying-and-Running-Private-workflow-manual)
-6. [Support Tools](#Support-Tools)
-## Introduction
+Fork of [Ultimagen/healthomics-workflows](https://github.com/Ultimagen/healthomics-workflows), which publishes Ultima Genomics' WDL workflows (a mirror of the `terra_pipeline` releases). Upstream targets AWS HealthOmics. This fork runs **on GCP only**, with Cromwell and GCP Batch, and is where the changes our analyses need go.
 
-1.	This repository provides Ultima Genomics pipelines that have been adapted to run as private workflows on AWS HealthOmics. Follow the directions here to deploy and run private workflows, including cases where you need flexibility in resource configuration, references, and workflow inputs.
-  
-2.	Each workflow folder contains the following:
-    - required wdl file\s
-    - HowTo documentation that details the workflow flow and how to run it externally of wdl
-    - documentation of the wdl inputs and outputs
-    - json that list the parameters for creating workflow
-    - folder with optional input templates with default parameters for the wdl
-    - folder with the different tasks the wdl is running
+## Layout
 
-3. The instructions below include localizing resources, deploying workflow and creating a run.
-4. Warning: the current Ready2Run workflows on AWS HealthOmics are associated with pipelines that are not relevant for use with this repository. Do not use Ready2Run as the recommended path for these workflows.
-5. For more questions about these workflows, please contact healthomics.support@ultimagen.com.
+- `workflows/<name>/<name>.wdl`: entry point of each workflow. The other WDLs in the folder are what it imports, and each folder is self-contained, as in Ultima's repository. The `.md` files in the folder are Ultima's documentation, and `input_templates/` holds the input templates.
+- `scripts/convert_to_gcp.py`: converts upstream content to GCP (see below).
+- `scripts/copy_references_s3_to_gcs.py`: mirrors the reference files of Ultima's public S3 bucket into GCS.
+- `scripts/export_germline_outputs.py`: copies the outputs of a `germline_pipeline` run to one folder per sample.
+- `.circleci/`: validation, build and publication of the workflows.
 
-## Terraform Modules for Environment Setup
-This repository includes [Terraform modules](terraform/healthomics-wdl-env)
-to simplify the deployment of AWS resources required to run Ultima Genomics WDL workflows on AWS HealthOmics.
-These modules automate the creation of necessary infrastructure, such as S3 buckets, IAM roles, and permissions,
-ensuring a consistent and secure environment for workflow execution.
-We strongly recommend using it for building your AWS omics env.
-Feel free to make customizations as per your request
+## What differs from upstream
 
-Key features:
-- Automated provisioning of AWS resources for HealthOmics workflows
-- Easy integration with existing workflow deployment steps and version management
+The conversion is done by `scripts/convert_to_gcp.py`, which is idempotent. With `--check`, which the CI runs, it fails if anything AWS-specific is left.
 
-Refer to the [terraform/healthomics-wdl-env/README.md](terraform/healthomics-wdl-env/README.md) for detailed usage instructions and module configuration options.
+- **References:** paths in Ultima's resource bucket (`s3://ultimagen-workflow-resources-us-east-1/...`) become the `gs://ULTIMA_REFERENCES/...` placeholder, with the same keys. The build replaces the placeholder with the GCS mirror (`REFERENCES_PREFIX`), so the repository names no bucket of ours. The placeholder is not a valid bucket name, so a WDL used without the build fails right away. Broad's references go to `gs://gcp-public-data--broad-references`.
+- **GPU:** in `call_variants`, CPU and memory only existed inside `omicsResourceFallbackOrder`, a key only HealthOmics understands. They are now declared directly (8 vCPU and 24 GB by default, next to 1 T4). Without them GCP Batch starts the VM with 1 vCPU and 1 GB.
+- **Network:** every task runs with `noAddress: false`. A VM without an external IP needs network and subnetwork in the Batch backend, and Cloud NAT to pull the images from Docker Hub.
+- **Templates:** `cloud_provider_override` is `"gcp"`, and the `no_address` inputs are `false`.
+- **Removed:** the HealthOmics terraform and scripts, the GitHub workflow that ran their validators, and each workflow's `*_params_def.json`.
 
-## Deploying Private Workflow
+Workflows validated on GCP: `germline_pipeline` (see its [changelog](workflows/germline_pipeline/germline_pipeline.changelog.md)). The others are converted but have not run here yet, and references only they use may be missing from the mirror.
 
-To localize workflow resources and create a private workflow in AWS HealthOmics:
+## Running a workflow
 
-- [use this script](scripts/healthomics_wf/create_healthomics_workflow.py) that localizes the necessary resources and create a private workflow on AWS HealthOmics. See [scripts/healthomics_wf/README.md](scripts/healthomics_wf/README.md) for detailed usage instructions. After running it your workflow [is ready to run](#running-private-workflow).
-- Alternatively, follow [this section](#Deploying-Private-workflow-manual-way) to do it manually.
+1. **References.** Copy what the workflow uses to the mirror. The script skips objects already there. The default groups cover `germline_pipeline` on GRCh38_GIABv3_hs38d1, and `--extra` copies other keys.
 
-## Running Private Workflow
+   ```sh
+   export REFERENCES_PREFIX=gs://<bucket>/<prefix>
+   scripts/copy_references_s3_to_gcs.py --dry-run
+   scripts/copy_references_s3_to_gcs.py
+   ```
 
-If you built your environment with the healthomics-wdl-env terraform module and deployed the workflow using the script with `--use-dynamodb`, you can run your workflow using [invoke_healthomics_run.py](scripts/healthomics_wf/invoke_healthomics_run.py) that invokes the StartOmicsRun lambda. See [scripts/healthomics_wf/README.md](scripts/healthomics_wf/README.md) for detailed usage instructions.
+2. **Bundle.** Use a published release (`<RELEASE_BUCKET>/<name>/<name>_<version>.{wdl,zip}`) or the dev build of your branch (`<RELEASE_BUCKET>/dev/<name>/`). The build also runs locally: it writes to `releases/` and needs [pumbaa](https://github.com/lmtani/pumbaa) v1.1.2 or newer.
 
-Alternatively, follow [this section](#Running-Private-workflow-manual-way) to do it manually.
+   ```sh
+   REFERENCES_PREFIX=gs://<bucket>/<prefix> PUMBAA=pumbaa BRANCH=local PIPELINE_NUMBER=0 bash .circleci/build.sh
+   ```
 
-## Deploying and Running Private workflow (manual)
-### Deploying Private workflow (manual way)
+3. **Inputs.** Start from the template and replace the placeholder and the sample fields. For paired-end `germline_pipeline`:
 
-To localize workflow resources to create a private workflow in AWS HealthOmics, follow the steps below:
-i. Pre requisites: 
-1. Ultima Genomics workflows uses several ECR containers, they are listed under each workflow tasks\globals.wdl.
+   ```sh
+   CRAM=gs://<bucket>/<run>-<sample>-<barcode id>-<barcode seq>.cram   # with .crai and _1.bedGraph.gz next to it
+   BASE=$(basename "$CRAM" .cram); DIR=$(dirname "$CRAM")
+   sed "s#gs://ULTIMA_REFERENCES#${REFERENCES_PREFIX}#g" workflows/germline_pipeline/input_templates/germline_pipeline_template-PE.json \
+     | jq --arg base "$BASE" --arg dir "$DIR" '
+         .["GermlinePipeline.base_file_name"] = $base
+       | .["GermlinePipeline.input_cram_bam_list"] = ["\($dir)/\($base).cram"]
+       | .["GermlinePipeline.input_cram_bam_index_list"] = ["\($dir)/\($base).cram.crai"]
+       | .["GermlinePipeline.bed_graph"] = ["\($dir)/\($base)_1.bedGraph.gz"]' > "${BASE}.inputs.json"
+   ```
 
-2. Pull and push the required public containers to your private ECR by following the steps:
+4. **Submission.** Send it to Cromwell, or use `pumbaa`:
 
-    a. Pull from docker hub or broad gcr into your local ecr
-     ~~~
-     docker pull <hub_username>/<image_name>:<tag> #the docker as it appear on globals.wdl
-     docker tag <hub_username>/<image_name>:<tag> <your_aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag>
-     aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <your_aws_account_id>.dkr.ecr.<region>.amazonaws.com
-     docker push <your_aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag> #if repository doesn't exist, you will need to create it first
-     ~~~
-   
-    b. Grant AWS HealthOmics permission to access your private ECR by following the instructions [here](https://docs.aws.amazon.com/omics/latest/dev/permissions-resource.html#permissions-resource-ecr).
-   
-3. Import your input files into a S3 bucket.
-4. Create an OmicsService role to access your resources by following the instructions [here](https://docs.aws.amazon.com/omics/latest/dev/setting-up-workflows.html).
+   ```sh
+   curl -s -X POST http://localhost:8000/api/workflows/v1 \
+     -F workflowSource=@germline_pipeline_<version>.wdl \
+     -F workflowDependencies=@germline_pipeline_<version>.zip \
+     -F workflowInputs=@"${BASE}.inputs.json"
+   ```
 
-ii. Download the workflow folder as a zipped file, this should include main wdl file on the top level folder, tasks folders and <workflow_name>_params.json . You can save this zipped file locally or in a S3 bucket. 
+5. **Outputs** (`germline_pipeline`). Copy the outputs to `<destination>/<sample>/`, with one folder per module plus `manifest.json` and `inputs.json`:
 
-iii. Download locally the parameter template for your desired use case from input_templates folder. 
+   ```sh
+   scripts/export_germline_outputs.py <workflow-id> --dest-root gs://<bucket>/<prefix> --dry-run
+   scripts/export_germline_outputs.py <workflow-id> --dest-root gs://<bucket>/<prefix>
+   ```
 
-iv. Modify and save the workflow scripts and parameter templates to meet your needs:
-   - Update **tasks/globals.wdl** with the urls of you private ECR images.
-   - Update the template's parameter values with their local s3 paths. Current links are to public buckets and transfer cost might incur by using them
+Cromwell needs:
+- a GCP Batch backend with T4 quota in the region;
+- a network that exists in the project, if the backend names one;
+- call caching on, so a resubmission after a failure reuses the tasks that already finished.
 
-Once the workflow resources have been deployed into locally (see instructions per workflow), user can create private workflow on AWS HealthOmics
-#### Create a private workflow in HealthOmics by following one of the two options below:
+## Releases and versioning
 
-i. From the CLI:
- ~~~
-$ aws omics create-workflow \
-    --name <workflow_name> \
-    --main <main_wdl_file> \  # in case there is more than one wdl file, the main one is the one named after the directory
-    --definition-zip fileb://<path_to_local_zip> \
-    --parameter-template file://<path_to_parameters_definition_json> \
-    --accelerators GPU
- ~~~
-ii. From the console:
-    
-    a. Click on **Private Workflows** from the left pane.
-    
-    b. Click on **Create Workflow** on the Workflows list.
-    
-    c. Follow the instructions on the console to create your workflow.
-       - Define "Main workflow definition file path" as <workflow_name>.wdl file
+This fork follows the same publication model as our other WDL repositories. CircleCI validates everything and then publishes each workflow with [pumbaa](https://github.com/lmtani/pumbaa) in two parts: the entry point and a zip with its imports, ready for Cromwell's `workflowDependencies`.
 
-### Running Private workflow (manual way)
-#### Run your workflow by following one of the two options below:
-   
-i. From the CLI:
- ~~~
-$ aws omics start-run \
-    --workflow-id <workflow_id> \
-    --role-arn <service_role_arn> \
-    --output-uri <s3_uri_for_output_folder> \
-    --parameters file://<path_to_local_parameters_file> \
-    --name <run_name> \
-    --retention-mode REMOVE
- ~~~
-ii. From the console (current omics version doesn't work well with wdl scoped parameters, cli is preferred):
-   
-   a. Click **Private Workflows** from the left pane.
+- **Validation** (every push):
+  - `convert_to_gcp.py --check`;
+  - `womtool validate` on each entry point and on each of its input templates. An input Ultima removed but a template still sets is caught before any submission.
+- **Branches:** every workflow goes to `<RELEASE_BUCKET>/dev/<name>/<name>_<date>_<branch>_<pipeline>.{wdl,zip}`. Versioned workflows also get their candidate `<name>_<version>`, overwritten on every push.
+- **main:**
+  - A workflow is versioned when `<name>.changelog.md` exists next to its entry point. It is then published as `<RELEASE_BUCKET>/<name>/<name>_<version>.{wdl,zip}`, with the changelog and a provenance `manifest.json` (commit and bundle digest).
+  - Releases are immutable: if the code changes without a version bump, the digest differs and the job fails.
+  - Workflows without a changelog are published under the build id.
+- **Version:** the default of `pipeline_version` in the entry point, formatted `<Ultima release>-mendelics.<n>` (e.g. `1.37.3-mendelics.1`). The changelog starts with `# <version>`, followed by a `YYYY-MM-DD (Date of Last Commit)` line. On pull requests, the `changelog-gate` job requires a version bump and a changelog entry for every versioned workflow the diff affects.
 
-   b. Click the **Workflow ID** from the Workflows list.
+CircleCI project variables (the repository names no bucket):
+- `RELEASE_BUCKET`: where releases go, `gs://<bucket>[/<prefix>]`;
+- `REFERENCES_PREFIX`: the mirror of Ultima's references, `gs://<bucket>[/<prefix>]`.
 
-   c. Click **Create Run** and enter the run information.
+GCP credentials come from the context set in `config.yml`.
 
-## Support Tools
+## Updating to a new Ultima release
 
-In case your private workflow's run failed, you can [use this script](scripts/healthomics_support/README.md) to extract information and logs from AWS HealthOmics run to ease failures
-debugging. Please attach the tar file generated by the script in any support call.
+1. Merge upstream into a branch:
+
+   ```sh
+   git fetch upstream
+   git merge upstream/main
+   ```
+
+2. Resolve the conflicts:
+   - **An AWS file that upstream changed and this fork removed:** `git rm` it again.
+   - **A conflict on a line the conversion rewrites** (reference path, `noAddress`, GPU runtime, `cloud_provider_override`): keep upstream's side. The conversion rewrites it in the next step. Conflicts on our own changes, such as the `pipeline_version` of versioned workflows, are resolved by hand.
+3. Convert and check:
+
+   ```sh
+   python3 scripts/convert_to_gcp.py
+   python3 scripts/convert_to_gcp.py --check
+   ```
+
+4. For each versioned workflow, bump the version to `<new release>-mendelics.1` and open its changelog section.
+5. Open the pull request. The CI validates the templates against the new WDLs and points out inputs that no longer exist.

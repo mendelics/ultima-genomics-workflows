@@ -17,26 +17,26 @@ The steps of the pipeline are as follows: generate segmental duplication regions
 
 ```bash
 # Homology table and index
-s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/hg38.bed.gz
-s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/hg38.bed.gz.tbi
+gs://ULTIMA_REFERENCES/hg38/segmental_duplications/hg38.bed.gz
+gs://ULTIMA_REFERENCES/hg38/segmental_duplications/hg38.bed.gz.tbi
 
 # Background regions for CNV calling
-s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/background_regions/hg38.bg.bed.gz
+gs://ULTIMA_REFERENCES/hg38/segmental_duplications/background_regions/hg38.bg.bed.gz
 
 # Trained CNV model (segdup_regions are generated from this)
-s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/parascopy_model_261011/model.tar.gz
+gs://ULTIMA_REFERENCES/hg38/segmental_duplications/parascopy_model_261011/model.tar.gz
 
 # DeepVariant model for segmental duplications
-s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx
+gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx
 
 # Reference genome files
 gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta
 gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai
 gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.dict
 or
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict
 ```
 
 #### Step 0: Generate segmental duplication regions from CNV model
@@ -117,7 +117,7 @@ parascopy "cn-using" model \
 Before running parascopy call, you need to generate precalled variants using DeepVariant with the specialized segmental duplication model. See [howto-germline-calling-efficient-dv.md](howto-germline-calling-efficient-dv.md) for detailed DeepVariant instructions.
 
 For segmental duplication analysis, use the specialized model:
-`s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx`
+`gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx`
 
 After running DeepVariant to generate precalled variants, run parascopy call:
 

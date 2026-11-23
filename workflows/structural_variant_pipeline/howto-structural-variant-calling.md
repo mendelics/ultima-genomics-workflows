@@ -24,18 +24,18 @@ The following files are publicly available:
     gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt
     gs://gcp-public-data--broad-references/hg38/v0/wgs_calling_regions.hg38.interval_list
     or
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt
-    s3://ultimagen-workflow-resources-us-east-1/hg38/v0/wgs_calling_regions.hg38.interval_list
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict
+    gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt
+    gs://ULTIMA_REFERENCES/hg38/v0/wgs_calling_regions.hg38.interval_list
 
 The following file is required as input for UA realignment:
     
     gs://concordanz/hg38/UA/b38-v45-79372c0.uai
 or 
 
-    s3://ultimagen-workflow-resources-us-east-1/hg38/UA/b38-v45-79372c0.uai
+    gs://ULTIMA_REFERENCES/hg38/UA/b38-v45-79372c0.uai
 
 ### Pipeline steps 
 
@@ -46,7 +46,7 @@ hg38 interval file can be downloaded from:
     gs://concordanz/sv/wgs_calling_regions.hg38_no_cytoBandIdeo_acen.interval_list
 or
 
-    s3://ultimagen-workflow-resources-us-east-1/sv/wgs_calling_regions.hg38_no_cytoBandIdeo_acen.interval_list
+    gs://ULTIMA_REFERENCES/sv/wgs_calling_regions.hg38_no_cytoBandIdeo_acen.interval_list
 
 Assembly is run on a small interval in the genome determined by an input bed file. This can be used to scatter the genome into small intervals, and then parallelize the workflow across these intervals. A convenient tool to generate scattered intervals is picard IntervalListTools. A typical command to scatter intervals provided below. Note that the input to this command is Picard's interval_list format, and not the simple bed format:
 
@@ -508,7 +508,7 @@ Rscript /opt/gridss/link_breakpoints.R \
 Download directory with necessary reference files with : 
 
 ```
-aws s3 cp --recursive s3://ultimagen-workflow-resources-us-east-1/sv/gripss/ .
+aws s3 cp --recursive gs://ULTIMA_REFERENCES/sv/gripss/ .
 ```
 
 GRIPSS docker: (run on a merge of the vcfs produced in scatter by AnnotateVariants above)

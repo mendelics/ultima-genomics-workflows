@@ -26,7 +26,7 @@
         "Y"
     ],
     "EfficientDV.run_ploidy_estimation": false,
-    "EfficientDV.model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wes/v1.16/ultimagen-germline-WES-v1.16-ramp.onnx",
+    "EfficientDV.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wes/v1.16/ultimagen-germline-WES-v1.16-ramp.onnx",
     "EfficientDV.min_variant_quality_hmer_indels": 5,
     "EfficientDV.min_variant_quality_exome_hmer_indels": 7,
     "EfficientDV.min_variant_quality_non_hmer_indels": 0,
@@ -37,6 +37,6 @@
     "EfficientDV.keep_duplicates": false,
     "EfficientDV.add_ins_size_channel": true,
     "EfficientDV.override_target_intervals": "<targeted_exome>.interval_list",
-    "EfficientDV.cloud_provider_override": "aws",
-    "EfficientDV.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "EfficientDV.cloud_provider_override": "gcp",
+    "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

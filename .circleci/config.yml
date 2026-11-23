@@ -1,0 +1,137 @@
+version: 2.1
+
+orbs:
+  gcp-cli: circleci/gcp-cli@3.1.1
+
+# ------------------------------------------------------------------------------
+#                         Executors (Environments)
+# ------------------------------------------------------------------------------
+executors:
+  default_machine:
+    machine:
+      image: ubuntu-2204:2023.04.2
+
+  wdl_validate_docker:
+    docker:
+      - image: broadinstitute/womtool:88-ab3f9b5
+
+  python_docker:
+    docker:
+      - image: cimg/python:3.11
+
+# ------------------------------------------------------------------------------
+#                          Reusable Commands
+# ------------------------------------------------------------------------------
+commands:
+  install-pumbaa:
+    description: "Installs pumbaa, which bundles each workflow with its imports."
+    parameters:
+      version:
+        type: string
+        default: v1.1.2
+    steps:
+      - run:
+          name: "Install pumbaa << parameters.version >>"
+          command: |
+            wget -q https://github.com/lmtani/pumbaa/releases/download/<< parameters.version >>/pumbaa_Linux_x86_64.tar.gz
+            tar -xzf pumbaa_Linux_x86_64.tar.gz pumbaa
+
+# ------------------------------------------------------------------------------
+#                               Jobs
+# ------------------------------------------------------------------------------
+jobs:
+
+  # Fails when something AWS-specific is left, typically after an upstream merge
+  gcp-conversion:
+    executor: python_docker
+    steps:
+      - checkout
+      - run:
+          name: "Check that the workflows are converted to GCP"
+          command: python3 scripts/convert_to_gcp.py --check
+
+  # womtool on every workflow entry point and on its input templates
+  wdl-validate:
+    executor: wdl_validate_docker
+    steps:
+      - checkout
+      - run:
+          name: "Validate workflows and input templates"
+          command: bash .circleci/validate-wdl.sh
+
+  # Requires a changelog and version bump for versioned workflows affected by the diff
+  changelog-gate:
+    executor: python_docker
+    steps:
+      - checkout
+      - run:
+          name: "Validate changelogs and version bumps"
+          command: python3 .circleci/changelog_gate.py
+
+  # Builds every workflow of the branch and uploads it to the dev area. Needs RELEASE_BUCKET and
+  # REFERENCES_PREFIX in the CircleCI project; the repository names no bucket.
+  build-dev:
+    executor: default_machine
+    steps:
+      - checkout
+      - gcp-cli/setup
+      - install-pumbaa
+      - run:
+          name: "Build workflows"
+          command: |
+            export BRANCH="<< pipeline.git.branch >>"
+            export PIPELINE_NUMBER="<< pipeline.number >>"
+            bash .circleci/build.sh
+      - run:
+          name: "Upload dev builds"
+          command: |
+            source .circleci/release_lib.sh
+            gsutil -m cp -r releases/* "$(release_root)/dev/"
+
+  # Publishes releases (main only): versioned workflows by their pipeline_version,
+  # the others with the build id
+  release:
+    executor: default_machine
+    steps:
+      - checkout
+      - gcp-cli/setup
+      - install-pumbaa
+      - run:
+          name: "Release workflows"
+          command: |
+            export BRANCH="<< pipeline.git.branch >>"
+            export PIPELINE_NUMBER="<< pipeline.number >>"
+            bash .circleci/release.sh
+
+# ------------------------------------------------------------------------------
+#                          Orchestration (Workflows)
+# ------------------------------------------------------------------------------
+workflows:
+  wdl-pipelines:
+    jobs:
+      - gcp-conversion
+
+      - wdl-validate
+
+      - changelog-gate:
+          filters:
+            branches:
+              ignore: main
+
+      - build-dev:
+          context: quiasma-repo-content-access
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - gcp-conversion
+            - wdl-validate
+
+      - release:
+          context: quiasma-repo-content-access
+          filters:
+            branches:
+              only: main
+          requires:
+            - gcp-conversion
+            - wdl-validate

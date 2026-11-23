@@ -1,7 +1,7 @@
 {
     "GermlinePipeline.base_file_name": "<base_file_name>",
     "GermlinePipeline.bed_graph": [
-        "s3://<sample>.1_bedGraph.gz"
+        "gs://<sample>.1_bedGraph.gz"
     ],
     "GermlinePipeline.input_cram_bam_index_list": [
         "<input_cram_bam>.cram.crai"
@@ -11,20 +11,20 @@
     ],
     "GermlinePipeline.variant_catalog": "<variant_catalog>.json",
     "GermlinePipeline.add_ins_size_channel": true,
-    "GermlinePipeline.background_bed": "s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/background_regions/hg38.bg.bed.gz",
+    "GermlinePipeline.background_bed": "gs://ULTIMA_REFERENCES/hg38/segmental_duplications/background_regions/hg38.bg.bed.gz",
     "GermlinePipeline.cap_at_optimal_coverage": false,
-    "GermlinePipeline.cn_model": "s3://ultimagen-workflow-resources-us-east-1/hg38/segmental_duplications/parascopy_model_261011/model.tar.gz",
+    "GermlinePipeline.cn_model": "gs://ULTIMA_REFERENCES/hg38/segmental_duplications/parascopy_model_261011/model.tar.gz",
     "GermlinePipeline.cnv_create_md5_checksum_outputs": false,
     "GermlinePipeline.config_file_string": "variantcalling.breakpointLowQuality = 120.0 variantcalling.breakendLowQuality = 120.0 variantcalling.writeFiltered = true variantcalling.requireReadPair = false variantcalling.requireSplitRead = false variantcalling.callUnassembledBreakends = true variantcalling.callUnassembledBreakpoints = true variantcalling.breakendMaxAssemblySupportBias = 100 variantcalling.breakpointMaxAssemblySupportBias = 100 variantcalling.includeSingleAssemblyFilter = false variantcalling.requiredReadAndAssemblyBreakpointOverlap = 5",
     "GermlinePipeline.cushion_size": 1500,
     "GermlinePipeline.dv_ensemble_size": 5,
     "GermlinePipeline.dv_min_fraction_single_strand_non_snps": 0.15,
-    "GermlinePipeline.dv_model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v2.0/ultimagen-germline-wgs-solaris2-hg38-regnet-v2.0.gpu-ens.onnx",
+    "GermlinePipeline.dv_model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v2.0/ultimagen-germline-wgs-solaris2-hg38-regnet-v2.0.gpu-ens.onnx",
     "GermlinePipeline.dv_num_shards": 50,
     "GermlinePipeline.dv_preemptible_tries": 2,
     "GermlinePipeline.dv_single_strand_filter": true,
     "GermlinePipeline.exclude_filters": "SHORT_SR_NORMAL",
-    "GermlinePipeline.filtering_model": "s3://ultimagen-workflow-resources-us-east-1/filtering_models/cnv_filtering_model_v1.7.4.pkl",
+    "GermlinePipeline.filtering_model": "gs://ULTIMA_REFERENCES/filtering_models/cnv_filtering_model_v1.7.4.pkl",
     "GermlinePipeline.filtering_model_decision_threshold": 31,
     "GermlinePipeline.gene_symbols": [
         "ABCG2",
@@ -52,11 +52,11 @@
         "MT-RNR1"
     ],
     "GermlinePipeline.giraffe_parameters": {
-        "ref_gbz": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.gbz",
-        "ref_dist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.dist",
-        "ref_min": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.withzip.min",
-        "ref_zipcodes": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.zipcodes",
-        "ref_paths": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/GRCh38h0h.path_list.txt",
+        "ref_gbz": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.gbz",
+        "ref_dist": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.dist",
+        "ref_min": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.withzip.min",
+        "ref_zipcodes": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.zipcodes",
+        "ref_paths": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/GRCh38h0h.path_list.txt",
         "prefix_to_strip": "GRCh38#0#"
     },
     "GermlinePipeline.haploid": false,
@@ -86,15 +86,15 @@
     ],
     "GermlinePipeline.output_detailed_csv": true,
     "GermlinePipeline.output_summary_csv": true,
-    "GermlinePipeline.pgx_model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx",
-    "GermlinePipeline.ploidy_file": "s3://ultimagen-workflow-resources-us-east-1/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_female.ploidy",
+    "GermlinePipeline.pgx_model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx",
+    "GermlinePipeline.ploidy_file": "gs://ULTIMA_REFERENCES/hg38/germline_CNV_cohort/pe_v1.0/solaris_max_pe_66samples_cohort_v1.0.plus_female.ploidy",
     "GermlinePipeline.prefilter_query": "QUAL>120",
     "GermlinePipeline.realign_mapq": 60,
     "GermlinePipeline.recalibrate_vaf": false,
     "GermlinePipeline.ref_files_for_tarball": [
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta"
+        "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "gs://ULTIMA_REFERENCES/hg38/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
+        "gs://ULTIMA_REFERENCES/hg38/v3_hs38d1/GRCh38_GIABv3_hs38d1.fasta"
     ],
     "GermlinePipeline.ref_padding": 500,
     "GermlinePipeline.reference_genome": "hg38",
@@ -104,8 +104,8 @@
     "GermlinePipeline.run_ploidy_estimation": true,
     "GermlinePipeline.run_roh": true,
     "GermlinePipeline.run_ua": true,
-    "GermlinePipeline.segdup_model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx",
-    "GermlinePipeline.segdup_no_address": true,
+    "GermlinePipeline.segdup_model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx",
+    "GermlinePipeline.segdup_no_address": false,
     "GermlinePipeline.segdup_preemptible_tries": 3,
     "GermlinePipeline.sex_chromosomes": [
         "chrX",
@@ -122,12 +122,12 @@
     "GermlinePipeline.sv_num_shards": 50,
     "GermlinePipeline.sv_scatter_intervals_break": 10000000,
     "GermlinePipeline.symbolic_vcf_format": true,
-    "GermlinePipeline.t1k_index_tar": "s3://ultimagen-workflow-resources-us-east-1/hla/t1k_index_hladb_v3.63.0.tar.gz",
+    "GermlinePipeline.t1k_index_tar": "gs://ULTIMA_REFERENCES/hla/t1k_index_hladb_v3.63.0.tar.gz",
     "GermlinePipeline.threads": 2,
     "GermlinePipeline.ua_parameters": {
         "v_aware_alignment_flag": false,
         "ua_extra_args": "--seed-score-ratio 0.5 --vector --soft-clipping --realignment-tag re --mismatch-cost -6"
     },
-    "GermlinePipeline.cloud_provider_override": "aws",
-    "GermlinePipeline.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "GermlinePipeline.cloud_provider_override": "gcp",
+    "GermlinePipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

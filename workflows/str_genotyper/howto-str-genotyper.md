@@ -33,9 +33,9 @@ The STR Genotyper workflow performs Short Tandem Repeat (STR) genotyping on whol
    gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai
    gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.dict
    or
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict
    ```
 
 ### Docker Image
@@ -116,9 +116,9 @@ The STR genotyper is available as a WDL workflow (`str_genotyper.wdl`). Create a
 ```json
 {
     "STRGenotyper.base_file_name": "sample_name",
-    "STRGenotyper.cram_file": "s3://path/to/sample.cram",
-    "STRGenotyper.cram_index": "s3://path/to/sample.cram.crai",
-    "STRGenotyper.variant_catalog": "s3://path/to/variant_catalog.json",
+    "STRGenotyper.cram_file": "gs://path/to/sample.cram",
+    "STRGenotyper.cram_index": "gs://path/to/sample.cram.crai",
+    "STRGenotyper.variant_catalog": "gs://path/to/variant_catalog.json",
     "STRGenotyper.references": {
         "ref_fasta": "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta",
         "ref_fasta_index": "gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai",

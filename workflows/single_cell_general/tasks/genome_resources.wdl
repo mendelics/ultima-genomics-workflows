@@ -18,12 +18,12 @@ workflow GenomeResourcesWorkflow {
   output {
     Map[String, GenomeResources] resources = {
       "hg38": {
-        "ref_alt": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt",
-        "ref_dict": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict",
-        "ref_fasta": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "ref_fasta_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
-        "trim_align_sort_coverage_intervals": "s3://ultimagen-workflow-resources-us-east-1/interval_lists/coverage_intervals.hg38.tar.gz",
-        "ua_index": "s3://ultimagen-workflow-resources-us-east-1/hg38/UA/b38-v45-79372c0.uai"
+        "ref_alt": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt",
+        "ref_dict": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict",
+        "ref_fasta": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "ref_fasta_index": "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
+        "trim_align_sort_coverage_intervals": "gs://ULTIMA_REFERENCES/interval_lists/coverage_intervals.hg38.tar.gz",
+        "ua_index": "gs://ULTIMA_REFERENCES/hg38/UA/b38-v45-79372c0.uai"
 }
     }
   }

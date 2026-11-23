@@ -32,9 +32,9 @@ The PyPGx workflow performs comprehensive pharmacogenomics analysis on whole-gen
    gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai
    gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.dict
    or
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
-   s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+   gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict
    ```
 
 4. **Optional VCF File**
