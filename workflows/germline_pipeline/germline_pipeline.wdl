@@ -40,7 +40,7 @@ import "segdup.wdl" as SegDupSubWF
 
 workflow GermlinePipeline {
   input {
-    String pipeline_version = "1.37.3" # !UnusedDeclaration
+    String pipeline_version = "1.37.3-mendelics.1" # !UnusedDeclaration
 
     # ---- GermlinePipeline inputs ----
     Array[File] input_cram_bam_list
