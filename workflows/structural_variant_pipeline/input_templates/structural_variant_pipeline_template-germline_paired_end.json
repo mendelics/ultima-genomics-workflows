@@ -33,13 +33,13 @@
     "SVPipeline.extended_mate_recovery_max_ref_span": 500,
     "SVPipeline.run_giraffe": false,
     "SVPipeline.giraffe_parameters": {
-        "ref_gbz": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.gbz",
-        "ref_dist": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.dist",
-        "ref_min": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.withzip.min",
-        "ref_zipcodes": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.zipcodes",
-        "ref_paths": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/GRCh38h0h.path_list.txt",
+        "ref_gbz": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.gbz",
+        "ref_dist": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.dist",
+        "ref_min": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.withzip.min",
+        "ref_zipcodes": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.d9.shortread.zipcodes",
+        "ref_paths": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/GRCh38h0h.path_list.txt",
         "prefix_to_strip": "GRCh38#0#"
     },
     "SVPipeline.cloud_provider_override": "aws",
-    "SVPipeline.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "SVPipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

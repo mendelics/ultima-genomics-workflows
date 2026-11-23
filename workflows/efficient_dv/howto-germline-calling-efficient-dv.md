@@ -22,22 +22,22 @@ gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.fasta.fai
 gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.dict
 gs://gcp-public-data--broad-references/hg38/v0/wgs_calling_regions.hg38.interval_list
 or
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta.fai
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dict
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/wgs_calling_regions.hg38.interval_list
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta.fai
+gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dict
+gs://ULTIMA_REFERENCES/hg38/v0/wgs_calling_regions.hg38.interval_list
 ```
 3. A model in ONNX format. For WGS data use:
 ```
 gs://concordanz/deepvariant/model/germline/wgs/v2.0/ultimagen-germline-wgs-solaris2-hg38-regnet-v2.0.gpu-ens.onnx
 or
-s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v2.0/ultimagen-germline-wgs-solaris2-hg38-regnet-v2.0.gpu-ens.onnx
+gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v2.0/ultimagen-germline-wgs-solaris2-hg38-regnet-v2.0.gpu-ens.onnx
 ```
 For paired-end (PE) WGS data use:
 ```
 gs://concordanz/deepvariant/model/germline/wgs/pe/v1.2/ultimagen-germline-wgs-pe-v1.2.gpu-ens.onnx
 or
-s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/pe/v1.2/ultimagen-germline-wgs-pe-v1.2.gpu-ens.onnx
+gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/pe/v1.2/ultimagen-germline-wgs-pe-v1.2.gpu-ens.onnx
 ```
 
 **NOTE:** the exact model may differ between use-cases, we recommend consulting with the parameters templates provided to find the exact model
@@ -94,7 +94,7 @@ The PAR regions for hg38 are available in:
 ```
 gs://concordanz/hg38/v0/par_regions.hg38.bed
 or
-s3://ultimagen-workflow-resources-us-east-1/hg38/v0/par_regions.hg38.bed
+gs://ULTIMA_REFERENCES/hg38/v0/par_regions.hg38.bed
 ```
 
 Ploidy can also be estimated from the CRAM alone, without a VCF, using a `mosdepth` coverage summary:
@@ -207,7 +207,7 @@ Using `--annotate` together with `--bed_annotation_files` adds annotations to th
 
 Using a `##INFO` in the header of the bed file. For example:
 ```
-##INFO=<ID=EXOME,Number=1,Type=String,Description="Genomic Region Annotation: In the exome (s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/exome.twist.bed)">
+##INFO=<ID=EXOME,Number=1,Type=String,Description="Genomic Region Annotation: In the exome (gs://ULTIMA_REFERENCES/hg38/annotation_intervals/exome.twist.bed)">
 chr1    69090   70008   TRUE
 chr1    450739  451678  TRUE
 ```
@@ -217,7 +217,7 @@ If `##INFO` is not present in the bed file, then a json file with the same name 
 {
  "ID": "EXOME",
  "Type": "String",
- "Description": "Genomic Region Annotation: In the exome (s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/exome.twist.bed)"
+ "Description": "Genomic Region Annotation: In the exome (gs://ULTIMA_REFERENCES/hg38/annotation_intervals/exome.twist.bed)"
 }
 ```
 
@@ -236,7 +236,7 @@ REFLEN > 220 and vc.isFiltered()
 ```
 
 dbSNP data can be downloaded from: gs://gcp-public-data--broad-references/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
-or s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
+or gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
 
 ### Workflow That Includes Haplotype Data from Pangenomes
 
@@ -289,7 +289,7 @@ gs://concordanz/deepvariant/model/germline/wgs/v2.1/ultimagen-germline-wgs-solar
 or
 
 ```bash
-s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v2.1/ultimagen-germline-wgs-solaris2-pan-hprc-v1.0-regnet-v2.1.onnx
+gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v2.1/ultimagen-germline-wgs-solaris2-pan-hprc-v1.0-regnet-v2.1.onnx
 ```
 
 The post-processing step remains unchanged.
@@ -385,7 +385,7 @@ The model is available in:
 ```
 gs://concordanz/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx
 or
-s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx
+gs://ULTIMA_REFERENCES/deepvariant/model/germline/segdup_1.0/model_dyn_1500.onnx
 ```
 
 **post_process** is run with the same command as above.
@@ -397,5 +397,5 @@ s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/segdup_1.
 #### Solaris 1.0
 The models described above apply to Solaris 2.0 data. For processing WGS Solaris 1.0 data we recommend the following changes to the workflow:
 
-1. Use the following model: `s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx`
+1. Use the following model: `gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx`
 2. Run call_variants with a single pass (omit all `--second-pass-*` arguments).

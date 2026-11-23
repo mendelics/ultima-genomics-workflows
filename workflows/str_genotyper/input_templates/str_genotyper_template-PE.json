@@ -18,5 +18,5 @@
     "STRGenotyper.micro_allele_consensus_ratio": 0.8,
     "STRGenotyper.micro_allele_min_reads": 10,
     "STRGenotyper.paired_end": true,
-    "STRGenotyper.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "STRGenotyper.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

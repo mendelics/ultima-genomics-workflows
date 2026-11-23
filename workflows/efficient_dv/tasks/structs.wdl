@@ -361,8 +361,8 @@ struct DeepSRSNVParams {
     Int? dnn_merge_chunk_size         # max prediction rows per DNNMergeAndAnnotate chunk (default: 2500000)
     Int? dnn_merge_max_parallel_chunks # max chunks processed concurrently in DNNMergeAndAnnotate (default: 4)
     # Feature channels
-    File channel_registry             # Required: channel_registry.json (cloud URI: gs:// or s3://)
-    File vocab_config                 # Required: vocab.json (cloud URI: gs:// or s3://)
+    File channel_registry             # Required: channel_registry.json (cloud URI: gs:// or gs://)
+    File vocab_config                 # Required: vocab.json (cloud URI: gs:// or gs://)
     # Shard-parallel tensorization (optional; enables the VCF-direct + Rust sharded path)
     String? tensorizer                # "rust" (default) or "python" per-read channel builder
     Int? num_train_tensorize_intervals # genomic intervals the TRAINING pos/neg tensorize scatters over (default

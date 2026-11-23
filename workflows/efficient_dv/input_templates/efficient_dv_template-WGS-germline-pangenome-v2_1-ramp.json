@@ -28,7 +28,7 @@
     "EfficientDV.run_ploidy_estimation": true,
     "EfficientDV.run_haplotype_sampling": true,
     "EfficientDV.min_mapping_quality": 1,
-    "EfficientDV.model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v2.1/ultimagen-germline-wgs-solaris2-pan-hprc-v1.0-regnet-v2.1.onnx",
+    "EfficientDV.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v2.1/ultimagen-germline-wgs-solaris2-pan-hprc-v1.0-regnet-v2.1.onnx",
     "EfficientDV.min_variant_quality_hmer_indels": 5,
     "EfficientDV.min_variant_quality_exome_hmer_indels": 7,
     "EfficientDV.min_variant_quality_non_hmer_indels": 0,
@@ -38,11 +38,11 @@
     ],
     "EfficientDV.keep_duplicates": true,
     "EfficientDV.add_ins_size_channel": true,
-    "EfficientDV.ref_hapl": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.hapl",
-    "EfficientDV.ref_gbz_for_haplotypes": "s3://ultimagen-workflow-resources-us-east-1/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.gbz",
+    "EfficientDV.ref_hapl": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.hapl",
+    "EfficientDV.ref_gbz_for_haplotypes": "gs://ULTIMA_REFERENCES/hg38/hprc-pangenomes/hprc-v1.1-mc-grch38.gbz",
     "EfficientDV.num_haplotypes": 32,
     "EfficientDV.include_reference_in_haplotypes": true,
     "EfficientDV.diploid_sampling_in_haplotypes": true,
     "EfficientDV.cloud_provider_override": "aws",
-    "EfficientDV.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

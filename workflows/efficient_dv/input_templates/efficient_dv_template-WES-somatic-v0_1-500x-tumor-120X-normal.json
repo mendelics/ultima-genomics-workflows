@@ -33,7 +33,7 @@
         "<normal_bam_file>.cram.crai"
     ],
     "EfficientDV.ug_make_examples_extra_args": "--interval-max-nreads=500000",
-    "EfficientDV.model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/somatic/wes/deepvariant-ultima-somatic-wes-model-v0.1.ckpt-120000.onnx",
+    "EfficientDV.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/somatic/wes/deepvariant-ultima-somatic-wes-model-v0.1.ckpt-120000.onnx",
     "EfficientDV.keep_duplicates": false,
     "EfficientDV.add_ins_size_channel": false,
     "EfficientDV.min_fraction_hmer_indels": 0.02,
@@ -61,13 +61,13 @@
     "EfficientDV.call_variants_uncompr_buf_size_gb": 2,
     "EfficientDV.ug_call_variants_extra_mem": 16,
     "EfficientDV.annotation_intervals": [
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/LCR-hs38.bed",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/mappability.0.bed",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/hmers_7_and_higher.bed",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/UG-High-Confidence-Regions/v3.1/ug_hcr.bed",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/gnomad.common.indel.annotation.sort.bed"
+        "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/LCR-hs38.bed",
+        "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/mappability.0.bed",
+        "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/hmers_7_and_higher.bed",
+        "gs://ULTIMA_REFERENCES/hg38/UG-High-Confidence-Regions/v3.1/ug_hcr.bed",
+        "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/gnomad.common.indel.annotation.sort.bed"
     ],
     "EfficientDV.ug_post_processing_extra_args": "--ignore_multi_allelic_cvos",
     "EfficientDV.cloud_provider_override": "aws",
-    "EfficientDV.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

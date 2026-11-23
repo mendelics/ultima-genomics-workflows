@@ -32,7 +32,7 @@
     "EfficientDV.background_cram_index_files": [
         "<normal_cram_file>.cram.crai"
     ],
-    "EfficientDV.model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/somatic/wgs/ffpe/v1.8/deepvariant-ultima-somatic-wgs-ffpe-model-v1.8.onnx",
+    "EfficientDV.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/somatic/wgs/ffpe/v1.8/deepvariant-ultima-somatic-wgs-ffpe-model-v1.8.onnx",
     "EfficientDV.keep_duplicates": false,
     "EfficientDV.add_ins_size_channel": true,
     "EfficientDV.ug_make_examples_extra_args": "--channels hmer_deletion_quality,hmer_insertion_quality,non_hmer_insertion_quality --interval-max-nreads=500000",
@@ -51,5 +51,5 @@
     "EfficientDV.ug_make_examples_memory_override": 4,
     "EfficientDV.ug_call_variants_extra_mem": 16,
     "EfficientDV.cloud_provider_override": "aws",
-    "EfficientDV.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

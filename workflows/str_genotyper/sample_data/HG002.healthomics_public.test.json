@@ -1,9 +1,9 @@
 {
     "STRGenotyper.base_file_name": "NA24385",
-    "STRGenotyper.cram_file": "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/NA24385-Z0027.cram",
-    "STRGenotyper.cram_index": "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/NA24385-Z0027.cram.crai",
+    "STRGenotyper.cram_file": "gs://ULTIMA_REFERENCES/sample_data/germline/NA24385-Z0027.cram",
+    "STRGenotyper.cram_index": "gs://ULTIMA_REFERENCES/sample_data/germline/NA24385-Z0027.cram.crai",
     "STRGenotyper.reference_genome": "hg38",
-    "STRGenotyper.variant_catalog": "s3://ultimagen-workflow-resources-us-east-1/sample_data/str_genotyper/clinical_variant_catalog.json",
+    "STRGenotyper.variant_catalog": "gs://ULTIMA_REFERENCES/sample_data/str_genotyper/clinical_variant_catalog.json",
     "STRGenotyper.ref_padding": 500,
     "STRGenotyper.min_repeat": 1,
     "STRGenotyper.max_repeat": 100,
@@ -18,5 +18,5 @@
     "STRGenotyper.micro_allele_consensus_ratio": 0.8,
     "STRGenotyper.micro_allele_min_reads": 10,
     "STRGenotyper.paired_end": false,
-    "STRGenotyper.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "STRGenotyper.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

@@ -7,12 +7,12 @@
         "sort": true
     },
     "SingleCell.ref_fastas_cram": [
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/v0/Homo_sapiens_assembly38.fasta",
-        "s3://ultimagen-workflow-resources-us-east-1/hg38/methyl_seq_ref/on_tool/hg38_Lambda_pUC19_simple.fa",
-        "s3://ultimagen-workflow-resources-us-east-1/hg19/v0/Homo_sapiens_assembly19.fasta",
-        "s3://ultimagen-workflow-resources-us-east-1/ref_cram/hg19.ucsc.fa",
-        "s3://ultimagen-workflow-resources-us-east-1/ref_cram/GCF_000001405.25_GRCh37.p13_genomic.fna",
-        "s3://ultimagen-workflow-resources-us-east-1/ref_cram/GCF_000001405.39_GRCh38.p13_genomic.fna"
+        "gs://ULTIMA_REFERENCES/hg38/v0/Homo_sapiens_assembly38.fasta",
+        "gs://ULTIMA_REFERENCES/hg38/methyl_seq_ref/on_tool/hg38_Lambda_pUC19_simple.fa",
+        "gs://ULTIMA_REFERENCES/hg19/v0/Homo_sapiens_assembly19.fasta",
+        "gs://ULTIMA_REFERENCES/ref_cram/hg19.ucsc.fa",
+        "gs://ULTIMA_REFERENCES/ref_cram/GCF_000001405.25_GRCh37.p13_genomic.fna",
+        "gs://ULTIMA_REFERENCES/ref_cram/GCF_000001405.39_GRCh38.p13_genomic.fna"
     ],
     "SingleCell.reference_genome": "hg38",
     "SingleCell.sorter_params": {
@@ -21,9 +21,9 @@
         "output_group": "{minorRG}",
         "output_path": "{RunID}/{RunID}_{minorRG}",
         "demux_extra_args": "--cell-barcode-umi-length 12  --fastq-header-line='{instrument}:{ri}:{ri}:{ri}:{camera}:{ring}:{tile}:{xpos}:{ypos}:{segment-num}:{first-flow-signal}:{filtered}:{RSQ}:{barcode-seq}:{umis}:{bead-index}' --fastq-underscores-for-missing-fields=true --trimmed-tags=rg --sample-nr-reads=1000000 --output-format={fm} --sort=false",
-        "single_cell_cbc_classifier": "s3://ultimagen-workflow-resources-us-east-1/single_cell/class_suspicious_cells/cbc_classifier_params_10x_v1.json"
+        "single_cell_cbc_classifier": "gs://ULTIMA_REFERENCES/single_cell/class_suspicious_cells/cbc_classifier_params_10x_v1.json"
     },
-    "SingleCell.star_genome": "s3://ultimagen-workflow-resources-us-east-1/bioinfo-resources/tools/STAR_hg38_cr_2.7.8a.zip",
+    "SingleCell.star_genome": "gs://ULTIMA_REFERENCES/bioinfo-resources/tools/STAR_hg38_cr_2.7.8a.zip",
     "SingleCell.preemptible_tries": 1,
     "SingleCell.no_address": true,
     "SingleCell.cpu": 32,
@@ -31,14 +31,14 @@
     "SingleCell.barcode_rg": "S1_L001_R1_001",
     "SingleCell.insert_rg": "S1_L001_R2_001",
     "SingleCell.trimmer_parameters": {
-        "formats_description": "s3://ultimagen-workflow-resources-us-east-1/trimmer-formats/3.12/public/single_cell/10x-flex.json",
+        "formats_description": "gs://ULTIMA_REFERENCES/trimmer-formats/3.12/public/single_cell/10x-flex.json",
         "format": "10x BDB flex",
         "failure_read_group": "unmatched",
         "extra_args": "--compare \"rq<=1.0\" --histogram=%1.histogram.csv --failure-field=fm:Z:cram  --output-field fm:Z:fastq --output-qname %Q/1 --output-field rg:Z:S1_L001_R1_001 --output-sequence %1%2 --new-output-context --output-field fm:Z:fastq --output-qname %Q/2 --output-field rg:Z:S1_L001_R2_001 --output-sequence %5%4%3",
         "add_run_id_as_ri_tag": true,
         "pattern_files": [
-            "s3://ultimagen-workflow-resources-us-east-1/trimmer-formats/3.12/public/trim_align_sort/catchall.csv",
-            "s3://ultimagen-workflow-resources-us-east-1/trimmer-formats/3.12/public/single_cell/10x-737K-fixed-rna-profiling.csv"
+            "gs://ULTIMA_REFERENCES/trimmer-formats/3.12/public/trim_align_sort/catchall.csv",
+            "gs://ULTIMA_REFERENCES/trimmer-formats/3.12/public/single_cell/10x-737K-fixed-rna-profiling.csv"
         ],
         "memory_gb": 128
     },

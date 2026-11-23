@@ -92,7 +92,7 @@ Either when using the WDL or running as standalone, the following inputs are nee
     ]
     or 
     [
-      "s3://ultimagen-workflow-resources-us-east-1/hg38/UG-High-Confidence-Regions/v1.3/ug_hcr.bed"
+      "gs://ULTIMA_REFERENCES/hg38/UG-High-Confidence-Regions/v1.3/ug_hcr.bed"
     ]
 
   c. exclude_regions_bed - BED regions that will be excluded from the analysis by position. Default:
@@ -106,7 +106,7 @@ Either when using the WDL or running as standalone, the following inputs are nee
     ]
     or
     [
-      "s3://ultimagen-workflow-resources-us-east-1/hg38/annotation_intervals/UG_MRD_blacklist_v0.bed"
+      "gs://ULTIMA_REFERENCES/hg38/annotation_intervals/UG_MRD_blacklist_v0.bed"
     ]
 
   d. exclude_regions_vcf / exclude_regions_vcf_indices - VCF files whose variants are excluded from the signatures by **exact locus and alt allele** (not by position), so a signature SNV is only dropped when the same substitution appears in the exclusion VCF. Must be bgzipped and tabix-indexed, and the two arrays must be given in the same order. Default:
@@ -124,9 +124,9 @@ Either when using the WDL or running as standalone, the following inputs are nee
     ]
     or
     [
-      "s3://ultimagen-workflow-resources-us-east-1/hg38/somatic/af-only-gnomad.hg38.snps.AF_over_1e-3.vcf.gz",
-      "s3://ultimagen-workflow-resources-us-east-1/hg38/somatic/Homo_sapiens_assembly38.dbsnp138.chr1-22XY.snps.vcf.gz",
-      "s3://ultimagen-workflow-resources-us-east-1/hg38/mrd/pon.version1.vcf.gz"
+      "gs://ULTIMA_REFERENCES/hg38/somatic/af-only-gnomad.hg38.snps.AF_over_1e-3.vcf.gz",
+      "gs://ULTIMA_REFERENCES/hg38/somatic/Homo_sapiens_assembly38.dbsnp138.chr1-22XY.snps.vcf.gz",
+      "gs://ULTIMA_REFERENCES/hg38/mrd/pon.version1.vcf.gz"
     ]
 
   e. references - Reference genome. Default:
@@ -155,7 +155,7 @@ Either when using the WDL or running as standalone, the following inputs are nee
   
     "gs://concordanz/hg38/pcawg/pancan.filtered.vcf.gz"
     or
-    "s3://ultimagen-workflow-resources-us-east-1/hg38/pcawg/pancan.filtered.vcf.gz"
+    "gs://ULTIMA_REFERENCES/hg38/pcawg/pancan.filtered.vcf.gz"
 
   e. n_synthetic_signatures - number of synthetic signatures to generate from the database. Default: 30. This is also the QC threshold for a reliable null distribution — with fewer synthetic controls the "Synthetic controls" QC check is flagged. Set to 0 to disable generation of database controls altogether (the detection call then becomes Indeterminate).
 
@@ -534,13 +534,13 @@ See [MRD detection and reporting](#mrd-detection-and-reporting) for details on t
 
 ## test files
 ```
-{cfdna_featuremap}:s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_46_333_LuNgs_08.featuremap.chr20.vcf.gz
-{cfdna_featuremap_index}:s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_46_333_LuNgs_08.featuremap.chr20.vcf.gz.tbi
-{cfdna_cram_bam}:s3://ultimagen-workflow-resources-us-east-1/test_data/single_read_snv/Pa_46.333_LuNgs_08.Lb_744.chr20.cram
-{cfdna_cram_bam_index}:s3://ultimagen-workflow-resources-us-east-1/test_data/single_read_snv/Pa_46.333_LuNgs_08.Lb_744.chr20.cram.crai
-{external_matched_signature}: "s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_46_FreshFrozen.ann.chr20.vcf.gz"
-{external_control_signatures}: ["s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_67_FFPE.ann.chr20.vcf.gz"]
-{featuremap_df_file}:s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_46_333_LuNgs_08.featuremap_df.parquet
-{snv_database}:s3://ultimagen-workflow-resources-us-east-1/hg38/pcawg/pancan_pcawg_2020.chr20.vcf.gz
-{srsnv_metadata_json}:s3://ultimagen-workflow-resources-us-east-1/test_data/mrd/Pa_46_333_LuNgs_08.srsnv_metadata.json
+{cfdna_featuremap}:gs://ULTIMA_REFERENCES/test_data/mrd/Pa_46_333_LuNgs_08.featuremap.chr20.vcf.gz
+{cfdna_featuremap_index}:gs://ULTIMA_REFERENCES/test_data/mrd/Pa_46_333_LuNgs_08.featuremap.chr20.vcf.gz.tbi
+{cfdna_cram_bam}:gs://ULTIMA_REFERENCES/test_data/single_read_snv/Pa_46.333_LuNgs_08.Lb_744.chr20.cram
+{cfdna_cram_bam_index}:gs://ULTIMA_REFERENCES/test_data/single_read_snv/Pa_46.333_LuNgs_08.Lb_744.chr20.cram.crai
+{external_matched_signature}: "gs://ULTIMA_REFERENCES/test_data/mrd/Pa_46_FreshFrozen.ann.chr20.vcf.gz"
+{external_control_signatures}: ["gs://ULTIMA_REFERENCES/test_data/mrd/Pa_67_FFPE.ann.chr20.vcf.gz"]
+{featuremap_df_file}:gs://ULTIMA_REFERENCES/test_data/mrd/Pa_46_333_LuNgs_08.featuremap_df.parquet
+{snv_database}:gs://ULTIMA_REFERENCES/hg38/pcawg/pancan_pcawg_2020.chr20.vcf.gz
+{srsnv_metadata_json}:gs://ULTIMA_REFERENCES/test_data/mrd/Pa_46_333_LuNgs_08.srsnv_metadata.json
 ```

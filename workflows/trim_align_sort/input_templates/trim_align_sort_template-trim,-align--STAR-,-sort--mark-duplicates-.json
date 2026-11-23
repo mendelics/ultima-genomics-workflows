@@ -15,15 +15,15 @@
         "sort": true
     },
     "TrimAlignSort.trimmer_parameters": {
-        "formats_description": "s3://ultimagen-workflow-resources-us-east-1/trimmer-formats/3.12/public/trim_align_sort/trim-ILMN-adapters.json",
+        "formats_description": "gs://ULTIMA_REFERENCES/trimmer-formats/3.12/public/trim_align_sort/trim-ILMN-adapters.json",
         "untrimmed_reads_action": "discard",
         "format": "trim ILMN adapters",
         "pattern_files": [
-            "s3://ultimagen-workflow-resources-us-east-1/trimmer-formats/3.12/public/trim_align_sort/catchall.csv"
+            "gs://ULTIMA_REFERENCES/trimmer-formats/3.12/public/trim_align_sort/catchall.csv"
         ]
     },
     "TrimAlignSort.aligner": "star",
-    "TrimAlignSort.star_genome": "s3://ultimagen-workflow-resources-us-east-1/hg38/rna-seq/STAR_hg38_3_2.7.10a.zip",
+    "TrimAlignSort.star_genome": "gs://ULTIMA_REFERENCES/hg38/rna-seq/STAR_hg38_3_2.7.10a.zip",
     "TrimAlignSort.star_align_extra_args": "--outSAMunmapped Within --chimOutType WithinBAM SoftClip --clip3pNbases 0 --outFilterMatchNminOverLread 0.66 --outFilterScoreMinOverLread 0.66 --scoreDelOpen -2 --scoreDelBase -2 --scoreInsOpen -2 --scoreInsBase -2 --alignEndsType Local --outSAMmapqUnique 60",
     "TrimAlignSort.sorter_params": {
         "mark_duplicates": true,

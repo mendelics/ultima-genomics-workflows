@@ -77,7 +77,7 @@ The pipeline produces output in the VCF format. Note that by default, all varian
 ## Evaluation process
 We suggest using standard tool [rtg vcfeval](https://github.com/RealTimeGenomics/rtg-tools) to perform comparison of the callset to the ground truth.  
 
-We suggest to exclude from the evaluation variants that fall in the UG-LCR, the region where we do not call variants confidently [UG-LCR](https://github.com/Ultimagen/healthomics-workflows/blob/main/docs/ug_hcr.md). ug_lcr as well as the complement ug_hcr annotation bed files can be downloaded from `s3://ultimagen-workflow-resources-us-east-1/hg38/UG-High-Confidence-Regions/v2.1.2/`. 
+We suggest to exclude from the evaluation variants that fall in the UG-LCR, the region where we do not call variants confidently [UG-LCR](https://github.com/Ultimagen/healthomics-workflows/blob/main/docs/ug_hcr.md). ug_lcr as well as the complement ug_hcr annotation bed files can be downloaded from `gs://ULTIMA_REFERENCES/hg38/UG-High-Confidence-Regions/v2.1.2/`. 
 
 ### Example command: 
 

@@ -1,10 +1,10 @@
 {
     "EfficientDV.base_file_name": "414004",
     "EfficientDV.cram_files": [
-        "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/414004-L7386-Z0114-CAACATACATCAGAT.cram"
+        "gs://ULTIMA_REFERENCES/sample_data/germline/414004-L7386-Z0114-CAACATACATCAGAT.cram"
     ],
     "EfficientDV.cram_index_files": [
-        "s3://ultimagen-workflow-resources-us-east-1/sample_data/germline/414004-L7386-Z0114-CAACATACATCAGAT.cram.crai"
+        "gs://ULTIMA_REFERENCES/sample_data/germline/414004-L7386-Z0114-CAACATACATCAGAT.cram.crai"
     ],
     "EfficientDV.num_shards": 50,
     "EfficientDV.make_gvcf": true,
@@ -26,7 +26,7 @@
         "Y"
     ],
     "EfficientDV.run_ploidy_estimation": true,
-    "EfficientDV.model_onnx": "s3://ultimagen-workflow-resources-us-east-1/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx",
+    "EfficientDV.model_onnx": "gs://ULTIMA_REFERENCES/deepvariant/model/germline/wgs/v1.9/ultima-usb4-amp_pcrfree-germline-model-v1.9.ckpt-420000.batch1500.onnx",
     "EfficientDV.min_variant_quality_hmer_indels": 5,
     "EfficientDV.min_variant_quality_exome_hmer_indels": 7,
     "EfficientDV.min_variant_quality_non_hmer_indels": 0,
@@ -37,5 +37,5 @@
     "EfficientDV.keep_duplicates": true,
     "EfficientDV.add_ins_size_channel": true,
     "EfficientDV.cloud_provider_override": "aws",
-    "EfficientDV.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "EfficientDV.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }

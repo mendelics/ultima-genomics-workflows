@@ -36,11 +36,11 @@
     "SVPipeline.input_tumor_crams_indexes": [
         "<cram_file>.cram.crai"
     ],
-    "SVPipeline.pon_sgl_file": "s3://ultimagen-workflow-resources-us-east-1/sv/gripss/sgl_pon.38.bed.gz",
-    "SVPipeline.pon_sv_file": "s3://ultimagen-workflow-resources-us-east-1/sv/gripss/sv_pon.38.bedpe.gz",
-    "SVPipeline.known_hotspot_file": "s3://ultimagen-workflow-resources-us-east-1/sv/gripss/known_fusions.38.sorted.bedpe",
-    "SVPipeline.repeat_mask_file": "s3://ultimagen-workflow-resources-us-east-1/sv/gripss/repeat_mask_data.38.fa.gz",
+    "SVPipeline.pon_sgl_file": "gs://ULTIMA_REFERENCES/sv/gripss/sgl_pon.38.bed.gz",
+    "SVPipeline.pon_sv_file": "gs://ULTIMA_REFERENCES/sv/gripss/sv_pon.38.bedpe.gz",
+    "SVPipeline.known_hotspot_file": "gs://ULTIMA_REFERENCES/sv/gripss/known_fusions.38.sorted.bedpe",
+    "SVPipeline.repeat_mask_file": "gs://ULTIMA_REFERENCES/sv/gripss/repeat_mask_data.38.fa.gz",
     "SVPipeline.create_md5_checksum_outputs": false,
     "SVPipeline.cloud_provider_override": "aws",
-    "SVPipeline.monitoring_script_input": "s3://ultimagen-workflow-resources-us-east-1/monitor_1.0.sh"
+    "SVPipeline.monitoring_script_input": "gs://ULTIMA_REFERENCES/monitor_1.0.sh"
 }
